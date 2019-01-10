@@ -47,3 +47,4 @@ func _fixed_process(delta):
 		if(healthLevel >= 1):
 			for i in range(1, 10):
 				get_node(ExtraHealthAccess[healthLevel-1]).set_frame(1)
+				

@@ -20,7 +20,7 @@ var velocity = Vector2()
 const MAX_SPEED = 1200
 const DECELERATION = 500
 const ACCELERATION = 400
-const GRAVITY = 1000
+const GRAVITY = 1500
 const JUMP_FORCE = 750
 
 

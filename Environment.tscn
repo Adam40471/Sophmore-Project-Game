@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://map.scn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.5724, 11.3102 )
+
+[node name="root" type="Node2D"]
+
+[node name="map" parent="." instance=ExtResource( 1 )]
+
+transform/scale = Vector2( 2, 2 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+
+process/pause_mode = 1
+transform/pos = Vector2( -24, -16.5 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 0.841474, 0, 0, 1, 68.4346, 63.25 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Player Sprite" type="Sprite" parent="Player"]
+
+transform/pos = Vector2( 57.25, 54.692 )
+transform/scale = Vector2( 0.34292, 0.300764 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Player CollisionShape" type="CollisionShape2D" parent="Player"]
+
+transform/pos = Vector2( 68.4346, 63.25 )
+transform/scale = Vector2( 0.841474, 1 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+
+[editable path="map"]

@@ -3,9 +3,7 @@
 [ext_resource path="res://scripts/HP Increase.gd" type="Script" id=1]
 [ext_resource path="res://Healthbar/HealthObjects/MaxHPIncrease.png" type="Texture" id=2]
 
-
-
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 7.8, 10 )
@@ -13,12 +11,12 @@ extents = Vector2( 7.8, 10 )
 [node name="Max HP Increase Node" type="Node2D"]
 
 [node name="HealthIncrease" type="Area2D" parent="." groups=[
-"player",
+"collectable",
 ]]
 
 transform/scale = Vector2( 10, 10 )
 input/pickable = false
-shapes/0/shape = SubResource( 4 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -36,7 +34,7 @@ texture = ExtResource( 2 )
 
 transform/pos = Vector2( 3.5, 3.5 )
 transform/scale = Vector2( 0.416667, 0.346154 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 

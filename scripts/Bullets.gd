@@ -14,7 +14,7 @@ func _fixed_process(delta):
 
 func _on_Bullets_area_enter(area):
 	#print("hi")
-	area.queue_free()
+	#area.queue_free()
 	self.queue_free()
 		
 func _hit_something():

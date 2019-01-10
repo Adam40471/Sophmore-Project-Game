@@ -15,7 +15,7 @@ __meta__ = {
 }
 
 [node name="Medkit1" type="Area2D" parent="." groups=[
-"player",
+"collectable",
 ]]
 
 transform/scale = Vector2( 10, 10 )

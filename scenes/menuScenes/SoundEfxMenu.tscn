@@ -55,7 +55,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="HSlider" type="HSlider" parent="SoundEfxMenu/Button1"]
+[node name="HSlider1" type="HSlider" parent="SoundEfxMenu/Button1"]
 
 process/pause_mode = 2
 focus/ignore_mouse = false
@@ -94,7 +94,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="HSlider" type="HSlider" parent="SoundEfxMenu/Button2"]
+[node name="HSlider2" type="HSlider" parent="SoundEfxMenu/Button2"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -130,11 +130,11 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Back to Main Menu"
-flat = false
+flat = true
 
-[connection signal="changed" from="SoundEfxMenu/Button1/HSlider" to="MainMenu" method="_on_HSlider_changed"]
+[connection signal="value_changed" from="SoundEfxMenu/Button1/HSlider1" to="MainMenu" method="_on_HSlider1_value_changed"]
 
-[connection signal="value_changed" from="SoundEfxMenu/Button1/HSlider" to="MainMenu" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="SoundEfxMenu/Button2/HSlider2" to="MainMenu" method="_on_HSlider2_value_changed"]
 
 [connection signal="pressed" from="SoundEfxMenu/Button 2" to="MainMenu" method="_on_Button_2_pressed"]
 

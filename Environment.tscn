@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=1]
+[gd_scene load_steps=29 format=1]
 
 [ext_resource path="res://Jump.wav" type="Sample" id=1]
 [ext_resource path="res://Laser.wav" type="Sample" id=2]
@@ -8,21 +8,17 @@
 [ext_resource path="res://tilesets/map.scn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/trapScripts/spikeTrap.gd" type="Script" id=7]
 [ext_resource path="res://sprites/Spikes 2.png" type="Texture" id=8]
-[ext_resource path="res://scripts/collectableScripts/Medkit.gd" type="Script" id=9]
-[ext_resource path="res://Healthbar/HealthObjects/Medkit.png" type="Texture" id=10]
-[ext_resource path="res://scripts/collectableScripts/HP Increase.gd" type="Script" id=11]
-[ext_resource path="res://Healthbar/HealthObjects/MaxHPIncrease.png" type="Texture" id=12]
-[ext_resource path="res://scripts/enemyScripts/Enemy.gd" type="Script" id=13]
-[ext_resource path="res://sprites/spikeTrap.png" type="Texture" id=14]
-[ext_resource path="res://scripts/playerScripts/Player.gd" type="Script" id=15]
-[ext_resource path="res://sprites/PlayerSheet.png" type="Texture" id=16]
-[ext_resource path="res://scripts/playerScripts/PlayerAnimation.gd" type="Script" id=17]
-[ext_resource path="res://scripts/playerScripts/health.gd" type="Script" id=18]
-[ext_resource path="res://tilesets/SpriteSheet.atex" type="Texture" id=19]
-[ext_resource path="res://Player/Graphics/icon.png" type="Texture" id=20]
-[ext_resource path="res://pause_popup.tscn" type="PackedScene" id=21]
-[ext_resource path="res://StreamPlayer.tscn" type="PackedScene" id=22]
-[ext_resource path="res://bensound-scifi.ogg" type="AudioStream" id=23]
+[ext_resource path="res://scripts/enemyScripts/Enemy.gd" type="Script" id=9]
+[ext_resource path="res://sprites/spikeTrap.png" type="Texture" id=10]
+[ext_resource path="res://scripts/playerScripts/Player.gd" type="Script" id=11]
+[ext_resource path="res://sprites/PlayerSheet.png" type="Texture" id=12]
+[ext_resource path="res://scripts/playerScripts/PlayerAnimation.gd" type="Script" id=13]
+[ext_resource path="res://scripts/playerScripts/health.gd" type="Script" id=14]
+[ext_resource path="res://tilesets/SpriteSheet.atex" type="Texture" id=15]
+[ext_resource path="res://Player/Graphics/icon.png" type="Texture" id=16]
+[ext_resource path="res://pause_popup.tscn" type="PackedScene" id=17]
+[ext_resource path="res://StreamPlayer.tscn" type="PackedScene" id=18]
+[ext_resource path="res://bensound-scifi.ogg" type="AudioStream" id=19]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -65,29 +61,19 @@ points = Vector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 [sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 7.8, 10 )
-
-[sub_resource type="RectangleShape2D" id=4]
-
-custom_solver_bias = 0.0
-extents = Vector2( 7.8, 10 )
-
-[sub_resource type="RectangleShape2D" id=5]
-
-custom_solver_bias = 0.0
 extents = Vector2( 220.765, 255.926 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=4]
 
 custom_solver_bias = 0.0
 radius = 3000.39
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 5.94208, 11.3102 )
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=6]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -100,7 +86,7 @@ border_size = 0
 border_blend = true
 draw_bg = true
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=7]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -113,12 +99,12 @@ border_size = 0
 border_blend = true
 draw_bg = true
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32.3847, 32.5951 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 5.42935 )
@@ -143,6 +129,8 @@ default/reverb_send = 0.0
 default/chorus_send = 0.0
 
 [node name="map" parent="." instance=ExtResource( 6 )]
+
+editor/display_folded = true
 
 [node name="SpikeTrap" type="Area2D" parent="."]
 
@@ -242,93 +230,16 @@ shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 6
 
-[node name="Medkit1" type="Area2D" parent="." groups=[
-"collectable",
-]]
-
-editor/display_folded = true
-transform/pos = Vector2( 230, 1059 )
-transform/scale = Vector2( 5, 5 )
-input/pickable = false
-shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-script/script = ExtResource( 9 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Medkit Sprite" type="Sprite" parent="Medkit1"]
-
-transform/pos = Vector2( 4, 4 )
-texture = ExtResource( 10 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Medkit1"]
-
-transform/pos = Vector2( 3.5, 3.5 )
-transform/scale = Vector2( 0.416667, 0.346154 )
-shape = SubResource( 3 )
-trigger = false
-_update_shape_index = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="HealthUP" type="Area2D" parent="." groups=[
-"collectable",
-]]
-
-editor/display_folded = true
-transform/pos = Vector2( 381, 1056 )
-transform/scale = Vector2( 5, 5 )
-input/pickable = false
-shapes/0/shape = SubResource( 4 )
-shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-script/script = ExtResource( 11 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="HP Increase Sprite" type="Sprite" parent="HealthUP"]
-
-transform/pos = Vector2( 4, 4 )
-texture = ExtResource( 12 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthUP"]
-
-transform/pos = Vector2( 3.5, 3.5 )
-transform/scale = Vector2( 0.416667, 0.346154 )
-shape = SubResource( 4 )
-trigger = false
-_update_shape_index = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="enemySlowTracker1" type="KinematicBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 363.225, 570.907 )
 transform/scale = Vector2( 0.36797, 0.248678 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 13 )
+script/script = ExtResource( 9 )
 maxHealth = 200
 currentHealth = 200
 damage = 25
@@ -347,7 +258,7 @@ enemyType = 5
 transform/pos = Vector2( 21.9771, 25.0261 )
 transform/rot = 180.0
 transform/scale = Vector2( 7.88235, 89.8698 )
-texture = ExtResource( 14 )
+texture = ExtResource( 10 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -358,7 +269,7 @@ transform/pos = Vector2( 28.7686, 2.11646 )
 transform/rot = 180.0
 transform/scale = Vector2( 0.467093, 0.753986 )
 input/pickable = true
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -32.4534 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -369,7 +280,7 @@ angular_damp = 1.0
 [node name="damagePlayer" type="CollisionShape2D" parent="enemySlowTracker1/playerDamage"]
 
 transform/pos = Vector2( 0, -32.4534 )
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -382,7 +293,7 @@ transform/pos = Vector2( 26.8975, 0.73291 )
 transform/rot = 180.0
 transform/scale = Vector2( 0.200702, 0.102813 )
 input/pickable = true
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 7.20596, 0, -221.517 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -397,7 +308,7 @@ __meta__ = {
 
 transform/pos = Vector2( 0, -221.517 )
 transform/scale = Vector2( 1, 7.20596 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -410,25 +321,26 @@ __meta__ = {
 ]]
 
 process/pause_mode = 1
+editor/display_folded = true
 transform/pos = Vector2( 48.2941, -22.4117 )
 input/pickable = false
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 0.95243, 0, 0, 1.32772, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 15 )
+script/script = ExtResource( 11 )
 
 [node name="Player Sprite" type="Sprite" parent="Player"]
 
 transform/pos = Vector2( -14.8825, -16.8237 )
-texture = ExtResource( 16 )
+texture = ExtResource( 12 )
 centered = false
 vframes = 12
 hframes = 13
 frame = 52
-script/script = ExtResource( 17 )
+script/script = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -436,7 +348,7 @@ __meta__ = {
 [node name="Player CollisionShape" type="CollisionShape2D" parent="Player"]
 
 transform/scale = Vector2( 0.95243, 1.32772 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -472,7 +384,7 @@ layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 2.1, 2.1 )
-script/script = ExtResource( 18 )
+script/script = ExtResource( 14 )
 
 [node name="Control" type="Control" parent="Player/Health Canvas"]
 
@@ -500,8 +412,8 @@ margin/left = -9.0
 margin/top = -10.0
 margin/right = 244.0
 margin/bottom = 7.0
-custom_styles/fg = SubResource( 8 )
-custom_styles/bg = SubResource( 9 )
+custom_styles/fg = SubResource( 6 )
+custom_styles/bg = SubResource( 7 )
 range/min = 0.0
 range/max = 99.0
 range/step = 1.0
@@ -518,7 +430,7 @@ __meta__ = {
 [node name="HealthOverlay" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( -13, -11.0078 )
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 centered = false
 vframes = 20
 hframes = 2
@@ -532,7 +444,7 @@ __meta__ = {
 [node name="Extra Health1" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( -6, -16 )
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -543,7 +455,7 @@ __meta__ = {
 [node name="Extra Health2" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 2, -16 )
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -554,7 +466,7 @@ __meta__ = {
 [node name="Extra Health3" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 10, -16 )
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -565,7 +477,7 @@ __meta__ = {
 [node name="Extra Health4" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 18, -16 )
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -576,7 +488,7 @@ __meta__ = {
 [node name="Extra Health8" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 50, -16 )
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -587,7 +499,7 @@ __meta__ = {
 [node name="Extra Health7" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 42, -16 )
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -598,7 +510,7 @@ __meta__ = {
 [node name="Extra Health6" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 34, -16 )
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -609,7 +521,7 @@ __meta__ = {
 [node name="Extra Health5" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 26, -16 )
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -622,13 +534,13 @@ __meta__ = {
 editor/display_folded = true
 transform/pos = Vector2( 553.88, 1306.68 )
 input/pickable = false
-shapes/0/shape = SubResource( 10 )
+shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 0.607608, 0, 0, 0.596992, 0.0688686, -1.76943 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 13 )
+script/script = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -648,7 +560,7 @@ enemyType = 1
 [node name="Enemy Sprite" type="Sprite" parent="MirrorEnemy"]
 
 transform/scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 20 )
+texture = ExtResource( 16 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -657,7 +569,7 @@ __meta__ = {
 
 transform/pos = Vector2( 0.0688686, -1.76943 )
 transform/scale = Vector2( 0.607608, 0.596992 )
-shape = SubResource( 10 )
+shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -667,7 +579,7 @@ __meta__ = {
 [node name="Area2D" type="Area2D" parent="MirrorEnemy"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 11 )
+shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 2.26923, 0, 0, 4.07873, -0.431214, -1.87447 )
 shapes/0/trigger = true
 gravity_vec = Vector2( 0, 1 )
@@ -683,7 +595,7 @@ __meta__ = {
 
 transform/pos = Vector2( -0.431214, -1.87447 )
 transform/scale = Vector2( 2.26923, 4.07873 )
-shape = SubResource( 11 )
+shape = SubResource( 9 )
 trigger = true
 _update_shape_index = 0
 __meta__ = {
@@ -697,79 +609,7 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="MirrorEnemy1" type="KinematicBody2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 866.38, 1385.68 )
-input/pickable = false
-shapes/0/shape = SubResource( 10 )
-shapes/0/transform = Matrix32( 0.607608, 0, 0, 0.596992, 0.0688686, -1.76943 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 13 )
-__meta__ = {
-"_edit_group_": true
-}
-maxHealth = 100
-currentHealth = 100
-damage = 25
-directionH = 1
-directionV = 1
-speedH = 0
-speedV = 0
-speed = 0
-acceleration = 0
-vulnFreeze = true
-vulnElectric = true
-enemyType = 1
-
-[node name="Enemy Sprite" type="Sprite" parent="MirrorEnemy1"]
-
-transform/scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 20 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MirrorEnemy1"]
-
-transform/pos = Vector2( 0.0688686, -1.76943 )
-transform/scale = Vector2( 0.607608, 0.596992 )
-shape = SubResource( 10 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Area2D" type="Area2D" parent="MirrorEnemy1" groups=[
-"bullet",
-]]
-
-input/pickable = true
-shapes/0/shape = SubResource( 11 )
-shapes/0/transform = Matrix32( 2.26923, 0, 0, 4.07873, -0.431214, -1.87447 )
-shapes/0/trigger = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="TriggerCollision" type="CollisionShape2D" parent="MirrorEnemy1/Area2D"]
-
-transform/pos = Vector2( -0.431214, -1.87447 )
-transform/scale = Vector2( 2.26923, 4.07873 )
-shape = SubResource( 11 )
-trigger = true
-_update_shape_index = 0
-
-[node name="Damage Delay" type="Timer" parent="MirrorEnemy1"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = false
-
-[node name="pause_popup" parent="." instance=ExtResource( 21 )]
+[node name="pause_popup" parent="." instance=ExtResource( 17 )]
 
 editor/display_folded = true
 margin/left = 8.0
@@ -784,16 +624,12 @@ margin/top = 5.0
 margin/right = 470.0
 margin/bottom = 325.0
 
-[node name="StreamPlayer" parent="." instance=ExtResource( 22 )]
+[node name="StreamPlayer" parent="." instance=ExtResource( 18 )]
 
-stream/stream = ExtResource( 23 )
+stream/stream = ExtResource( 19 )
 stream/volume_db = -30.0
 
 [connection signal="body_enter" from="SpikeTrap" to="SpikeTrap" method="_on_SpikeTrap_body_enter"]
-
-[connection signal="body_enter" from="Medkit1" to="Medkit1" method="_on_Medkit1_body_enter"]
-
-[connection signal="body_enter" from="HealthUP" to="HealthUP" method="_on_HealthUP_body_enter"]
 
 [connection signal="body_enter" from="enemySlowTracker1/playerDamage" to="enemySlowTracker1" method="_on_playerDamage_body_enter"]
 

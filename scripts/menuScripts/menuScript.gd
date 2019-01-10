@@ -15,7 +15,7 @@ func _on_Options_pressed():
 
 
 func _on_Credits_pressed():
-	pass
+	get_tree().change_scene("res://scenes/menuScenes/Credits.tscn")
 
 func _on_Exit_pressed():
 	get_tree().quit()
@@ -41,14 +41,18 @@ func _on_BackToMainMenu_pressed():
 	#get_node("res://scripts/menuScripts/global.gd").setScene("res://scenes/menuScenes/MainMenu.tscn")
 
 
-func _on_HSlider_changed():
-	pass
-
-
-func _on_HSlider_value_changed( value ):
+func _on_HSlider1_value_changed( value ):
 	AudioServer.set_stream_global_volume_scale(value)
 
 
 func _on_Button_2_pressed():
 	get_tree().change_scene("res://scenes/menuScenes/MainMenu.tscn")
 	#get_node("res://scripts/menuScripts/global.gd").setScene("res://scenes/menuScenes/MainMenu.tscn")
+
+
+func _on_HSlider2_value_changed( value ):
+	AudioServer.set_fx_global_volume_scale(value)
+
+
+func _on_Button_pressed():
+	get_tree().change_scene("res://scenes/menuScenes/MainMenu.tscn")

@@ -96,6 +96,13 @@ func decrease_Health(amount):
 	currentHealth = currentHealth - amount
 	#If enemy has no health left they die
 	if (currentHealth <= 0):
+		var position_medkit = self.get_pos()
+		var medkit_scene = preload ("res://scenes/collectableScenes/Medkit.tscn")
+		var medkit = medkit_scene.instance()
+		medkit.set_pos(position_medkit)
+		get_tree().get_root().add_child(medkit)
+		
+		
 		queue_free()
 	#Limits enemys health so it doesn't go above its maxHealth
 	if (currentHealth > maxHealth):
@@ -107,7 +114,15 @@ func _on_Area2D_body_exit( body ):
 	
 	if (groups.has("cage")):
 		directionH = -directionH
-		directionV = -directionV	
+		directionV = -directionV
+	
+	#func _on_Area2D_body_enter(body):
+    #print(str('Body entered: ', body.get_name()))
+	
+	#func _on_Area2D_body_enter(body):
+    #if body.is_in_group("player"):
+     #print(str('Player has entered')
+	
 	
 func _on_playerDamage_body_enter( body ):
 	print(body.get_name())

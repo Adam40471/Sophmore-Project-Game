@@ -8,11 +8,9 @@
 
 extends KinematicBody2D
 
-var bulletDirections = {2: [Vector2(4,0),Vector2(19,65)],
- 						0: [Vector2(0,4),Vector2(0,0)],
- 						4: [Vector2(0,-4),Vector2(0,0)], 
- 						1: [Vector2(2, -2),Vector2(15,57)],
-				 	 	3: [Vector2(2,2),Vector2(15,78)]}
+var bulletDirections = {"Right": Vector2(4,0), "Left": Vector2(-4,0),
+ "Up": Vector2(0,4), "Down": Vector2(0,-4), "UpLeft": Vector2(-2,-2),
+ "UpRight": Vector2(2, -2), "DownLeft": Vector2(-2,2), "DownRight": Vector2(2,2)}
 
 #DIRECTIONS
 var input_direction = 0
@@ -128,13 +126,26 @@ func _process(delta):
 		var position = get_node("../Player").get_pos()
 		var bullet_scene = preload("res://Bullets.tscn")
 		var bullet = bullet_scene.instance()
-		
-		bullet.velocity = bulletDirections[aim][0]
-		bullet.velocity.x *= direction
-		position += Vector2(73,0)
-		position.x += bulletDirections[aim][1].x * direction
-		position.y += bulletDirections[aim][1].y
-		bullet.set_pos(position)
+		print("Aim: " + str(aim))
+		print("Direction: " + str(direction))
+		if (aim == 1 && direction == -1): #UpLeft
+			bullet.velocity = bulletDirections.UpLeft
+			bullet.set_pos(Vector2(position.x + 58, position.y + 57))
+		elif (aim == 2 && direction == -1): #Left
+			bullet.velocity = bulletDirections.Left
+			bullet.set_pos(Vector2(position.x + 55, position.y + 65))
+		elif (aim == 3 && direction == -1): #DownLeft
+			bullet.velocity = bulletDirections.DownLeft
+			bullet.set_pos(Vector2(position.x + 58, position.y + 77))
+		elif (aim == 1 && direction == 1): #UpRight
+			bullet.velocity = bulletDirections.UpRight
+			bullet.set_pos(Vector2(position.x + 88, position.y + 57))
+		elif (aim == 2 && direction == 1): #Right
+			bullet.velocity = bulletDirections.Right
+			bullet.set_pos(Vector2(position.x + 92, position.y + 65))
+		else: #DownRight
+			bullet.velocity = bulletDirections.DownRight
+			bullet.set_pos(Vector2(position.x + 88, position.y + 78))
 		get_tree().get_root().add_child(bullet)
 	
 	sprite.update(delta)	

@@ -1,10 +1,9 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://scripts/Medkit.gd" type="Script" id=1]
-[ext_resource path="res://HealthObjects/Medkit.png" type="Texture" id=2]
+[ext_resource path="res://Healthbar/HealthObjects/Medkit.png" type="Texture" id=2]
 
-
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 7.8, 10 )
@@ -21,7 +20,7 @@ __meta__ = {
 
 transform/scale = Vector2( 10, 10 )
 input/pickable = false
-shapes/0/shape = SubResource( 4 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -39,7 +38,7 @@ texture = ExtResource( 2 )
 
 transform/pos = Vector2( 3.5, 3.5 )
 transform/scale = Vector2( 0.416667, 0.346154 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 

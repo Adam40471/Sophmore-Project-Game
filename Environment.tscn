@@ -147,7 +147,6 @@ __meta__ = {
 
 [node name="Health Canvas" type="CanvasLayer" parent="Player"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -169,7 +168,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="Player/Health Canvas/Control"]
+[node name="Health Bar" type="ProgressBar" parent="Player/Health Canvas/Control"]
 
 rect/scale = Vector2( 0.25, 0.25 )
 focus/ignore_mouse = false
@@ -336,13 +335,13 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="HealthIncrease1" type="Area2D" parent="." groups=[
+[node name="HealthUP" type="Area2D" parent="." groups=[
 "player",
 ]]
 
 editor/display_folded = true
-transform/pos = Vector2( 381, 1056 )
-transform/scale = Vector2( 5, 5 )
+transform/pos = Vector2( 636, 882 )
+transform/scale = Vector2( 10, 10 )
 input/pickable = false
 shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
@@ -352,11 +351,8 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 10 )
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="HP Increase Sprite" type="Sprite" parent="HealthIncrease1"]
+[node name="HP Increase Sprite" type="Sprite" parent="HealthUP"]
 
 transform/pos = Vector2( 4, 4 )
 texture = ExtResource( 11 )
@@ -364,7 +360,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthIncrease1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthUP"]
 
 transform/pos = Vector2( 3.5, 3.5 )
 transform/scale = Vector2( 0.416667, 0.346154 )
@@ -510,6 +506,7 @@ autostart = false
 
 [node name="pause_popup" parent="." instance=ExtResource( 14 )]
 
+editor/display_folded = true
 margin/left = 8.0
 margin/top = -72.0
 margin/right = 48.0
@@ -524,7 +521,7 @@ margin/bottom = 325.0
 
 [connection signal="body_enter" from="Medkit1" to="Medkit1" method="_on_Medkit1_body_enter"]
 
-[connection signal="body_enter" from="HealthIncrease1" to="HealthIncrease1" method="_on_Medkit1_body_enter"]
+[connection signal="body_enter" from="HealthUP" to="HealthUP" method="_on_HealthUP_body_enter"]
 
 [connection signal="body_enter" from="MirrorEnemy/Area2D" to="MirrorEnemy" method="_on_Area2D_body_enter"]
 

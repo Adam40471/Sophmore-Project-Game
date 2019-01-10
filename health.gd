@@ -1,6 +1,8 @@
 #Adam Hamed
 #Health Bar code
-#OCTOBER 17th, 2017
+#OCTOBER 9th, 2017
+
+#UPDATED by Adam OCTOBER 17th, 2017 - Final Working Version
 
 extends CanvasLayer
 
@@ -16,7 +18,7 @@ func _ready():
 	set_process_input(true)
 	
 	#Initializes the health bar
-	get_node("Control/ProgressBar").set_value(health % 100)
+	get_node("Control/Health Bar").set_value(health % 100)
 	
 	#Extra Health Crystals begin hidden since you dont start with extra health (frame 255 is empty)
 	get_node("Control/Extra Health1").set_frame(255)
@@ -70,7 +72,7 @@ func modify_health(amount):
 	if (health > maxHealth):
 		health = maxHealth
 	#Refreshes the health bar
-	get_node("Control/ProgressBar").set_value(health  % 100)
+	get_node("Control/Health Bar").set_value(health  % 100)
 	
 	#Will kill the player if their health is 0
 	if (health <= 0):

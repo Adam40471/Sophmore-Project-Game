@@ -1,7 +1,9 @@
 [gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://scripts/collectableScripts/HP Increase.gd" type="Script" id=1]
-[ext_resource path="res://sprites/SpriteSheet.tex" type="Texture" id=2]
+[ext_resource path="res://scenes/menuScenes/HP Increase.gd" type="Script" id=1]
+[ext_resource path="res://Healthbar/HealthObjects/MaxHPIncrease.png" type="Texture" id=2]
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -14,9 +16,10 @@ extents = Vector2( 7.8, 10 )
 "collectable",
 ]]
 
+transform/scale = Vector2( 10, 10 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 0.557745, 0, 0, 0.463747, 4.39864, 4.40371 )
+shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -28,14 +31,11 @@ script/script = ExtResource( 1 )
 
 transform/pos = Vector2( 4, 4 )
 texture = ExtResource( 2 )
-vframes = 20
-hframes = 20
-frame = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HealthIncrease"]
 
-transform/pos = Vector2( 4.39864, 4.40371 )
-transform/scale = Vector2( 0.557745, 0.463747 )
+transform/pos = Vector2( 3.5, 3.5 )
+transform/scale = Vector2( 0.416667, 0.346154 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0

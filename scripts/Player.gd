@@ -72,7 +72,7 @@ func _process(delta):
 	
 	#Collision
 	if is_colliding():		
-		print("AM I ON SURFACE??")
+	#	print("AM I ON SURFACE??")
 		var vector_normal = get_collision_normal()
 		var final_movement = vector_normal.slide(movement_remainder)
 		speed_y = vector_normal.slide(Vector2(0, speed_y)).y	

@@ -1,98 +1,105 @@
 extends KinematicBody2D
 
+#ENEMY MASTER SCRIPT -----------------------------------
 
-#SPEEDS
-var speed_x = 0
-var speed_y = 0
-var velocity = Vector2()
-
-#CONSTANTS
-const MAX_SPEED = 100
-const DECELERATION = 50
-const ACCELERATION = 50
-const GRAVITY = 2250
-const JUMP_FORCE = 300
-
+#BASIC STATISTIC VARIABLES
+export (int) var maxHealth = 200
+export (int) var currentHealth = 200
 export (int) var damage = 25
-export (int) var currentHealth = 100
-export (int) var maxHealth = 100
 
-onready var damage_delay = get_node("damage_delay_timer")
+#BASIC MOVEMENT VARIABLES
+export (int) var directionH = 1
+export (int) var directionV = 1
+export (int) var speedH = 0
+export (int) var speedV = 0
+export (int) var acceleration = 0
 
-var damageEnabled = false
-	
+#WEAPON SPECIFIC VARIABLES
+#Stops an enemy from moving for 2 seconds.
+export (bool) var vulnFreeze = true
+#Slows an enemy for 5 seconds.
+export (bool) var vulnElectric = true
 
-#DIRECTIONS
-var input_direction = 0
-var direction = 0
+#ENEMY TYPE VARIABLE
+#Set this number inside of the game to the enemy type
+#you are looking for:
 
-#ALLOWS PROGRAM TO RUN
+#1 is Basic left-right moving enemy
+#2 is Basic up-down moving enemy
+#3 is Fast left-right moving enemy
+#4 is Fast up-down moving enemy
+#5 is Slow moving, tracking enemy
+#6 is Boss one, bullet-Hell, stationary
+
+# [Speed V, Speed H, Acceleration, Damage Amount, Actions Function Reference]	
+var enemyLibrary = {1: [0, 150, 10, null], 2: [150, 0, 0, null], 3: [0, 450, 5, null], 4: [450, 0, 5, null], 5: [200, 200, 2.5, funcref(self, "action1")], 6: [0, 0, 0, funcref(self, "action2")]}
+
+export (int) var enemyType = 5
+
+#This allows the script to run when the game begins.
 func _ready():
 	set_process(true)
 	set_process_input(true)
+	
+	speedH = enemyLibrary[enemyType][0]
+	speedV = enemyLibrary[enemyType][1]
+	acceleration = enemyLibrary[enemyType][2]
 
-#SPECIAL INPUT (JUMP)	
-func _input(event):
-	if event.is_action_pressed("jump"):
-		speed_y = -JUMP_FORCE
+
+#RUNS EVERY FRAME AND SETS ENEMY TYPE
+func _process(delta):
+	#Enemy type should be set before this point
+	
+	#if normal default movement will call action
+	if (enemyLibrary[enemyType][3] == null):
+		action(delta)
+	else: #if special movement call enemy specific function to override
+		enemyLibrary[enemyType][3].call_func(delta)
+	
+#PUT DEFAULT ACTION/MOVEMENT CODE HERE
+func action(delta):
+	#print("default")
+	pass
+#PUT OVERRIDING ACTION/MOVEMENT CODE HERE - CURRENTLY USED IN ENEMY 5
+func action1(delta):
+	#print("act1")
 	pass
 	
-#RUNS EVERY FRAME	
-func _process(delta):
+func action2(delta):
+	print("act2")
 	
-#KEYBOARD INPUTS
+#Placed here by ADAM; Decrements enemy Health
+func decrease_Health(amount):
+	currentHealth = currentHealth - amount
+	#If enemy has no health left they die
+	if (currentHealth <= 0):
+		queue_free()
+	#Limits enemys health so it doesn't go above its maxHealth
+	if (currentHealth > maxHealth):
+		currentHealth = maxHealth
 
-	if input_direction:
-		direction = input_direction
+#Keeps the enemy within a specific Area 2D named cage.
+func _on_Area2D_body_exit( body ):
+	var groups = body.get_groups()
 	
-	if Input.is_action_pressed("ui_left"):
-		input_direction = -1
-	elif Input.is_action_pressed("ui_right"):
-		input_direction = 1
-	else:
-		input_direction = 0
-			
-#MOVEMENT CALCULATIONS
-
-	if input_direction == - direction:
-		speed_x /= 3
-	if input_direction:
-		speed_x += ACCELERATION * delta
-	else:
-		speed_x -= DECELERATION * delta
-		
-	speed_x = clamp(speed_x, 0, MAX_SPEED)
-	speed_y += GRAVITY * delta
+	if (groups.has("cage")):
+		directionH = -directionH
+		directionV = -directionV
 	
-	velocity.x = speed_x * delta * direction
-	velocity.y = speed_y * delta
+	#func _on_Area2D_body_enter(body):
+    #print(str('Body entered: ', body.get_name()))
 	
-	var movement_remainder = move(velocity)
+	#func _on_Area2D_body_enter(body):
+    #if body.is_in_group("player"):
+     #print(str('Player has entered')
 	
-	move(velocity)
 	
 func _on_Area2D_body_enter( body ):
 	var groups = body.get_groups()
-	var healthDamage = -50
-	
+	#Print for testing purposes
+	print(str('Body entered: ', body.get_name()))
 	if (groups.has("player")):
-		body.get_node("Health Canvas").modify_health(-25)
-		#speed_y = -JUMP_FORCE - 200
-		#pass
-		#queue_free()
+		body.get_node("Health Canvas").modify_health(-damage)
 		
-	pass # replace with function body
-
-#PUT HERE BY ADAM
-#Spawn medkit when enemy dies
-#func spawnMedkit(delta):
-	#if (enemy dies):
-#		var position = get_node("../Enemy").get_pos()
-#		var medkit_scene = preload("res://Medkit.tscn")
-#		var medkitlol = medkit_scene.instance()
-#		medkitlol.set_pos(position)
-#		get_tree().get_root().add_child(medkitlol)
-	
-func on_damage_delay_timeout():
-	damageEnabled = false
-	
+	elif (groups.has("bullet")):
+		self.decrease_Health(50)

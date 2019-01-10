@@ -3,13 +3,14 @@
 [ext_resource path="res://scripts/playerScripts/Bullets.gd" type="Script" id=1]
 [ext_resource path="res://sprites/ball.png" type="Texture" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 0.982258, 0.961179 )
 
-[node name="Bullets" type="Area2D"]
+[node name="Bullets" type="Area2D" groups=[
+"bullet",
+]]
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )

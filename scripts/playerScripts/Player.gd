@@ -14,6 +14,10 @@ const bulletDirections = {2: [Vector2(4,0),Vector2(19,65)],
  						1: [Vector2(2, -2),Vector2(15,57)],
 				 	 	3: [Vector2(2,2),Vector2(15,78)]}
 
+#AUDIO
+var audioPlayer
+var runAudioInt = null
+
 #DIRECTIONS
 var input_direction = 0
 var direction = 1
@@ -21,6 +25,7 @@ var aim = 2
 
 #TIMERS
 var shootTime = 0
+var runSoundTime = 0
 
 #SPEEDS
 var speed_x = 0
@@ -44,6 +49,7 @@ onready var sprite = get_node("Player Sprite")
 func _ready():
 	set_process(true)
 	set_process_input(true)
+	audioPlayer = get_parent().get_node("SamplePlayer")
 	sprite.default("stand", aim, direction, false)
 
 #SPECIAL INPUT (JUMP)	
@@ -51,6 +57,7 @@ func _input(event):
 	if jumpCounter < maxJumps and event.is_action_pressed("jump"):
 		speed_y = -JUMP_FORCE
 		jumpCounter += 1
+		audioPlayer.play("Jump")
 	pass
 	
 func inputProccess(delta):
@@ -90,8 +97,11 @@ func inputProccess(delta):
 			
 
 func movementProcess(delta):
-	if input_direction == - direction:
-		speed_x /= 3
+	if input_direction != direction: 
+		if input_direction == 0:
+			speed_x *= .9
+		else:
+			speed_x /= 3
 	if input_direction:
 		speed_x += ACCELERATION * delta
 	else:
@@ -120,6 +130,25 @@ func movementProcess(delta):
 		
 		if vector_normal == Vector2(0, -1):
 			jumpCounter = 0
+			if(final_movement.x != 0):
+				if runSoundTime == 0:
+					runAudioInt = audioPlayer.play("Run")
+					runSoundTime += delta
+				else:
+					runSoundTime += delta
+					if runSoundTime >= 10.62:
+						runSoundTime = 0
+			else:
+				if(runAudioInt != null): 
+					audioPlayer.stop(runAudioInt)
+					runAudioInt = null
+				runSoundTime = 0
+	else:
+		if(runAudioInt != null): 
+			audioPlayer.stop(runAudioInt)
+			runAudioInt = null
+		runSoundTime = 0
+			
 
 func shootingProcess(delta):
 	if(shootTime > 0): 
@@ -139,6 +168,11 @@ func shootingProcess(delta):
 			position.y += bulletDirections[aim][1].y
 			bullet.set_pos(position)
 			get_tree().get_root().add_child(bullet)
+			audioPlayer.play("Laser")
+
+#func _sound():
+#	var music = get_node("SamplePlayer")
+#	#music.play()
 
 #RUNS EVERY FRAME	
 func _process(delta):

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://health.gd" type="Script" id=1]
-[ext_resource path="res://SpriteSheets/SpriteSheet.atex" type="Texture" id=2]
+[ext_resource path="res://tilesets/SpriteSheet.atex" type="Texture" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -68,7 +68,7 @@ range/page = 0.0
 range/value = 100.0
 range/exp_edit = false
 range/rounded = false
-percent/visible = true
+percent/visible = false
 __meta__ = {
 "_edit_group_": true
 }
@@ -82,5 +82,68 @@ vframes = 20
 hframes = 2
 region = true
 region_rect = Rect2( 20, 1, 68, 6 )
+
+[node name="Extra Health 1" type="Sprite" parent="Control"]
+
+transform/pos = Vector2( -9.5, -15.5 )
+texture = ExtResource( 2 )
+vframes = 20
+hframes = 20
+region = true
+region_rect = Rect2( 1, 1, 7, 7 )
+
+[node name="Extra Health 2" type="Sprite" parent="Control"]
+
+transform/pos = Vector2( 2, -15.5 )
+texture = ExtResource( 2 )
+vframes = 20
+hframes = 20
+region = true
+region_rect = Rect2( 1, 1, 7, 7 )
+
+[node name="Extra Health 3" type="Sprite" parent="Control"]
+
+transform/pos = Vector2( 12, -15.5 )
+texture = ExtResource( 2 )
+vframes = 20
+hframes = 20
+region = true
+region_rect = Rect2( 1, 1, 7, 7 )
+
+[node name="Extra Health 4" type="Sprite" parent="Control"]
+
+transform/pos = Vector2( 22, -15.5 )
+texture = ExtResource( 2 )
+vframes = 20
+hframes = 20
+region = true
+region_rect = Rect2( 1, 1, 7, 7 )
+
+[node name="Extra Health 5" type="Sprite" parent="Control"]
+
+transform/pos = Vector2( 32, -15.5 )
+texture = ExtResource( 2 )
+vframes = 20
+hframes = 20
+region = true
+region_rect = Rect2( 1, 1, 7, 7 )
+
+[node name="Extra Health 6" type="Sprite" parent="Control"]
+
+transform/pos = Vector2( 42, -15.5 )
+texture = ExtResource( 2 )
+vframes = 20
+hframes = 20
+region = true
+region_rect = Rect2( 1, 1, 7, 7 )
+
+[node name="Extra Health7" type="Sprite" parent="Control"]
+
+transform/pos = Vector2( 51, -15.5 )
+texture = ExtResource( 2 )
+vframes = 20
+hframes = 20
+region = true
+region_rect = Rect2( 1, 1, 7, 7 )
 
 

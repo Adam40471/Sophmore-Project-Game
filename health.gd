@@ -20,5 +20,10 @@ func _input(event):
 #Controls how health regenerates
 func _fixed_process(delta):
 	get_node("Control/ProgressBar").set_value(health)
+	
+	# Here is where we will do things when the health bar reaches 0
+	#if(health == 0):
+		#health = 100
+		
 	#health regeneration over time (for testing)
 	#health += delta * 2

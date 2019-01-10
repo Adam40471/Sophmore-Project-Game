@@ -14,6 +14,7 @@ func _fixed_process(delta):
 
 func _on_Bullets_area_enter(area):
 	#print("hi")
+	#commented out by Adam so it isnt breaking everything
 	#area.queue_free()
 	self.queue_free()
 		

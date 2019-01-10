@@ -82,6 +82,16 @@ func _on_Area2D_body_enter( body ):
 		#queue_free()
 		
 	pass # replace with function body
+
+#PUT HERE BY ADAM
+#Spawn medkit when enemy dies
+#func spawnMedkit(delta):
+	#if (enemy dies):
+#		var position = get_node("../Enemy").get_pos()
+#		var medkit_scene = preload("res://Medkit.tscn")
+#		var medkitlol = medkit_scene.instance()
+#		medkitlol.set_pos(position)
+#		get_tree().get_root().add_child(medkitlol)
 	
 func on_damage_delay_timeout():
 	damageEnabled = false

@@ -3,6 +3,7 @@
 #OCTOBER 17th, 2017
 
 #Updated to work correctly on October 19th
+#Updated to change group name of the item October 26th
 
 extends Area2D
 

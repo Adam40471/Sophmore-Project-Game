@@ -13,10 +13,12 @@ func _ready():
 
 #Controls how health decrements
 func _input(event):
+	#for testing
 	if event.is_action_pressed("ui_accept"):
 		health -= 10
 
 #Controls how health regenerates
 func _fixed_process(delta):
 	get_node("Control/ProgressBar").set_value(health)
+	#health regeneration over time (for testing)
 	#health += delta * 2

@@ -46,7 +46,6 @@ editor/display_folded = true
 [node name="Player" type="KinematicBody2D" parent="."]
 
 process/pause_mode = 1
-editor/display_folded = true
 transform/pos = Vector2( 100, -13.5 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )

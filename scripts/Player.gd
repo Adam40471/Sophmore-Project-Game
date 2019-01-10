@@ -1,9 +1,10 @@
 #RJ Compton
-#INITIAL MOVEMENT CODE
+#MOVEMENT CODE
 #OCTOBER 1, 2017
 
-#UPDATED OCTOBER 7, 2017
-#UPDATED OCTOBER 9, 2017
+#UPDATED by RJ OCTOBER 7, 2017 ---- JUMPING INITIAL
+#UPDATED by RJ October 9, 2017 ---- JUMPING FINAL
+#UPDATED by RJ October 13, 2017 --- COLLISION
 
 extends KinematicBody2D
 
@@ -17,11 +18,11 @@ var speed_y = 0
 var velocity = Vector2()
 
 #CONSTANTS
-const MAX_SPEED = 1200
-const DECELERATION = 500
-const ACCELERATION = 400
-const GRAVITY = 1500
-const JUMP_FORCE = 750
+const MAX_SPEED = 600
+const DECELERATION = 300
+const ACCELERATION = 150
+const GRAVITY = 1000
+const JUMP_FORCE = 350
 
 
 #ALLOWS PROGRAM TO RUN
@@ -65,4 +66,17 @@ func _process(delta):
 	velocity.x = speed_x * delta * direction
 	velocity.y = speed_y * delta
 	
+	var movement_remainder = move(velocity)
+	
 	move(velocity)
+	
+	#Collision
+	if is_colliding():		
+		print("AM I ON SURFACE??")
+		var vector_normal = get_collision_normal()
+		var final_movement = vector_normal.slide(movement_remainder)
+		speed_y = vector_normal.slide(Vector2(0, speed_y)).y	
+		
+		move(final_movement)
+		
+		

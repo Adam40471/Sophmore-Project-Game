@@ -32,6 +32,8 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		health = health - 50
 
+func 
+
 func _fixed_process(delta):
 	get_node("Control/ProgressBar").set_value(health)
 	
@@ -47,4 +49,3 @@ func _fixed_process(delta):
 		if(healthLevel >= 1):
 			for i in range(1, 10):
 				get_node(ExtraHealthAccess[healthLevel-1]).set_frame(1)
-				

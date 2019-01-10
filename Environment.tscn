@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://tilesets/map.scn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Player/Graphics/icon.png" type="Texture" id=3]
 [ext_resource path="res://health.gd" type="Script" id=4]
 [ext_resource path="res://tilesets/SpriteSheet.atex" type="Texture" id=5]
+[ext_resource path="res://scripts/Medkit.gd" type="Script" id=6]
+[ext_resource path="res://Healthbar/HealthObjects/Medkit.png" type="Texture" id=7]
+[ext_resource path="res://scripts/HP Increase.gd" type="Script" id=8]
+[ext_resource path="res://Healthbar/HealthObjects/MaxHPIncrease.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -36,6 +40,16 @@ dark_color = Color( 0.8, 0.8, 0.8, 1 )
 border_size = 0
 border_blend = true
 draw_bg = true
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.8, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.8, 10 )
 
 [node name="root" type="Node2D"]
 
@@ -140,10 +154,10 @@ margin/bottom = 7.0
 custom_styles/fg = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
 range/min = 0.0
-range/max = 100.0
+range/max = 99.0
 range/step = 1.0
 range/page = 0.0
-range/value = 100.0
+range/value = 99.0
 range/exp_edit = false
 range/rounded = false
 percent/visible = false
@@ -253,6 +267,80 @@ region_rect = Rect2( 1, 1, 7, 7 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Medkit1" type="Area2D" parent="." groups=[
+"player",
+]]
+
+transform/pos = Vector2( 230, 1059 )
+transform/scale = Vector2( 5, 5 )
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 6 )
+
+[node name="Medkit Sprite" type="Sprite" parent="Medkit1"]
+
+transform/pos = Vector2( 4, 4 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Medkit1"]
+
+transform/pos = Vector2( 3.5, 3.5 )
+transform/scale = Vector2( 0.416667, 0.346154 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HealthIncrease1" type="Area2D" parent="." groups=[
+"player",
+]]
+
+transform/pos = Vector2( 381, 1056 )
+transform/scale = Vector2( 5, 5 )
+input/pickable = false
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 8 )
+
+[node name="HP Increase Sprite" type="Sprite" parent="HealthIncrease1"]
+
+transform/pos = Vector2( 4, 4 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthIncrease1"]
+
+transform/pos = Vector2( 3.5, 3.5 )
+transform/scale = Vector2( 0.416667, 0.346154 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="body_enter" from="Medkit1" to="Medkit1" method="_on_Medkit1_body_enter"]
+
+[connection signal="body_enter" from="HealthIncrease1" to="HealthIncrease1" method="_on_Medkit1_body_enter"]
 
 
 [editable path="map"]

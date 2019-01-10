@@ -33,7 +33,7 @@ export (bool) var vulnElectric = true
 #6 is Boss one, bullet-Hell, stationary
 
 # [Speed V, Speed H, Acceleration, Damage Amount, Actions Function Reference]	
-var enemyLibrary = {1: [0, 150, 10, 5, null], 2: [150, 0, 0, 5, null], 3: [0, 450, 5, 5, null], 4: [450, 0, 5, 5, null], 5: [200, 200, 2.5, 10, funcref(self, "action1")], 6: [0, 0, 0, 10, funcref(self, "action2")]}
+var enemyLibrary = {1: [0, 150, 10, 5, null], 2: [150, 0, 0, 5, null], 3: [0, 450, 5, 5, null], 4: [450, 0, 5, 5, null], 5: [200, 200, 2.5, 10, funcref(self, "action1")], 6: [0, 0, 0, 10, funcref(self, "action2")], 7: [0, 0, 0, 1, funcref(self, "bossBullets")]}
 
 export (int) var enemyType = 5
 
@@ -88,8 +88,39 @@ func action1(delta): #tracking enemy
 	track = track.normalized() * speed * delta
 	move(track)
 	
-func action2(delta): #Mirror enemy.
-	print("act2")
+func action2(delta): #BOSS ONE: Bullet Hell and Teleporting
+	print("boss one works")
+	
+	#enemyType = 7
+	
+	#var position = get_node("../BossOneRoot").get_pos()	
+	#var bullet = bossBullets_scene.instance()
+	
+	
+func bossBullet(delta): #BOSS ONE BULLETS
+	var speed = 100
+	var track = Vector2()
+	var body = get_node("aggroArea").get_overlapping_bodies()
+	
+	#Tracks whether not the player is inside the enemy's Area2D (aggroArea).
+	#If the player is within the Area2D, the enemy will begin to track the player.
+	if(body.size() != 0):
+		for tracker in body:
+			if(tracker.is_in_group("player")):				
+				if(tracker.get_global_pos().x < self.get_global_pos().x):
+					track += Vector2(-1,0)
+				if(tracker.get_global_pos().x > self.get_global_pos().x +5):
+					track += Vector2(1,0)
+				if(tracker.get_global_pos().y < self.get_global_pos().y +5):
+					track += Vector2(0,-1)
+				if(tracker.get_global_pos().y > self.get_global_pos().y):
+					track += Vector2(0,1)
+					
+	track = track.normalized() * speed * delta
+	move(track)
+	
+	#self.set_pos(x,y)
+	#self.set_pos(x,y)
 	
 #Placed here by ADAM; Decrements enemy Health
 func decrease_Health(amount):
@@ -101,8 +132,6 @@ func decrease_Health(amount):
 		var medkit = medkit_scene.instance()
 		medkit.set_pos(position_medkit)
 		get_tree().get_root().add_child(medkit)
-		
-		
 		queue_free()
 	#Limits enemys health so it doesn't go above its maxHealth
 	if (currentHealth > maxHealth):
@@ -131,6 +160,9 @@ func _on_playerDamage_body_enter( body ):
 	print(str('Body entered: ', body.get_name()))
 	if (groups.has("player")):
 		body.get_node("Health Canvas").modify_health(-damage)
+	if (enemyType == 7):
+		if (body.get_name() == "Player" and body.get_name() == "Main"):
+			self.queue_free()
 
 func _on_playerDamage_area_enter( area ):
 	pass

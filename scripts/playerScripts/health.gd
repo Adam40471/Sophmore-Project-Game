@@ -78,7 +78,9 @@ func modify_health(amount):
 	#Will kill the player if their health is 0
 	if (health <= 0):
 		#Player dies
-		get_tree().change_scene("res://scenes/menuScenes/MainMenu.tscn")
+		#get_tree().change_scene("res://scenes/menuScenes/MainMenu.tscn")
+		get_node("/root/global").setScene("res://scenes/menuScenes/MainMenu.tscn")
+		
 		
 	#Manages the appearance of Extra Health Crystal icons
 	if(maxHealth / 100 >= 1):

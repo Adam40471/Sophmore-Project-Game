@@ -12,31 +12,45 @@ func _fixed_process(delta):
 #	if (bodies.size() > 0):
 #		print("hi")
 
+func damageable(area):
+	if (area.get_name() != "aggroArea" && area.get_parent().has_method("decrease_Health")):
+		return true
+	else:
+		return false
+
 func _on_Bullets_area_enter(area):
-	print(area.get_name())
-	if (area.get_parent().has_method("decrease_Health")):
-		area.get_parent().decrease_Health(50)
+	if damageable(area):
+		area.get_parent().decrease_Health(20)
 		self.queue_free()
-	#print("hi")
-	#commented out by Adam so it isnt breaking everything
-	#area.queue_free()
-	if (area.get_name() != "aggroArea"):
-		self.queue_free()
-		
-func _hit_something():
-	if (hit):
-		return
-	hit = true
-	set_process(false)
-	self.queue_free()
-
-#func _shoot(aim, direction):
 	
-	
-
 func _on_Bullets_body_enter( body ):
-	#print("hello")
+	if (body.has_method("damage")):
+		body.damage(10)
 	self.queue_free()
-	
-	
-	
+
+func _on_Rocket_area_enter( area ):
+	if damageable(area):
+		area.get_parent().decrease_Health(40)
+		self.queue_free()
+
+func _on_Rocket_body_enter( body ):
+	if (body.get_name() == "Main"):
+		self.queue_free()
+
+func _on_Shock_area_enter( area ):
+	if damageable(area):
+		area.get_parent().decrease_Health(40)
+		self.queue_free()
+
+func _on_Shock_body_enter( body ):
+	if (body.get_name() == "Main"):
+		self.queue_free()
+
+func _on_Freeze_area_enter( area ):
+	if damageable(area):
+		area.get_parent().decrease_Health(40)
+		self.queue_free()
+
+func _on_Freeze_body_enter( body ):
+	if (body.get_name() == "Main"):
+		self.queue_free()

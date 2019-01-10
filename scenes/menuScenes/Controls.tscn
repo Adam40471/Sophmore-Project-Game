@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://scenes/menuScenes/OptionsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://myFont.fnt" type="BitmapFont" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://sprites/SoundEffects/Laser3.smp" type="Sample" id=7]
 [ext_resource path="res://sprites/SoundEffects/Run.smp" type="Sample" id=8]
 [ext_resource path="res://StreamPlayer.tscn" type="PackedScene" id=9]
-[ext_resource path="res://bensound-scifi.ogg" type="AudioStream" id=10]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -241,7 +240,6 @@ default/chorus_send = 0.0
 
 [node name="StreamPlayer" parent="Controls" instance=ExtResource( 9 )]
 
-stream/stream = ExtResource( 10 )
 stream/play = true
 stream/volume_db = 0.0
 stream/autoplay = false

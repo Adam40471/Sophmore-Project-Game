@@ -2,15 +2,15 @@
 
 [ext_resource path="res://396239_romariogrande_alien-dream.ogg" type="AudioStream" id=1]
 [ext_resource path="res://tilesets/map.scn" type="PackedScene" id=2]
-[ext_resource path="res://scripts/Medkit.gd" type="Script" id=3]
-[ext_resource path="res://Healthbar/HealthObjects/Medkit.png" type="Texture" id=4]
-[ext_resource path="res://scripts/HP Increase.gd" type="Script" id=5]
-[ext_resource path="res://Healthbar/HealthObjects/MaxHPIncrease.png" type="Texture" id=6]
-[ext_resource path="res://scripts/Player.gd" type="Script" id=7]
-[ext_resource path="res://sprites/PlayerSheet.png" type="Texture" id=8]
-[ext_resource path="res://scripts/PlayerAnimation.gd" type="Script" id=9]
-[ext_resource path="res://health.gd" type="Script" id=10]
-[ext_resource path="res://tilesets/SpriteSheet.atex" type="Texture" id=11]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://sprites/PlayerSheet.png" type="Texture" id=4]
+[ext_resource path="res://scripts/PlayerAnimation.gd" type="Script" id=5]
+[ext_resource path="res://health.gd" type="Script" id=6]
+[ext_resource path="res://tilesets/SpriteSheet.atex" type="Texture" id=7]
+[ext_resource path="res://scripts/Medkit.gd" type="Script" id=8]
+[ext_resource path="res://Healthbar/HealthObjects/Medkit.png" type="Texture" id=9]
+[ext_resource path="res://scripts/HP Increase.gd" type="Script" id=10]
+[ext_resource path="res://Healthbar/HealthObjects/MaxHPIncrease.png" type="Texture" id=11]
 [ext_resource path="res://Enemy.gd" type="Script" id=12]
 [ext_resource path="res://Player/Graphics/icon.png" type="Texture" id=13]
 [ext_resource path="res://pause_popup.tscn" type="PackedScene" id=14]
@@ -18,19 +18,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 7.8, 10 )
+extents = Vector2( 5.94208, 11.3102 )
 
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
-extents = Vector2( 7.8, 10 )
-
-[sub_resource type="RectangleShape2D" id=3]
-
-custom_solver_bias = 0.0
-extents = Vector2( 6.1239, 11.3102 )
-
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=2]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -43,7 +33,7 @@ border_size = 0
 border_blend = true
 draw_bg = true
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=3]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -55,6 +45,16 @@ dark_color = Color( 0.8, 0.8, 0.8, 1 )
 border_size = 0
 border_blend = true
 draw_bg = true
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.8, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.8, 10 )
 
 [sub_resource type="RectangleShape2D" id=6]
 
@@ -83,117 +83,44 @@ stream/buffering_ms = 500
 
 editor/display_folded = true
 
-[node name="Medkit1" type="Area2D" parent="." groups=[
-"player",
-]]
-
-editor/display_folded = true
-transform/pos = Vector2( 230, 1059 )
-transform/scale = Vector2( 5, 5 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-script/script = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Medkit Sprite" type="Sprite" parent="Medkit1"]
-
-transform/pos = Vector2( 4, 4 )
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Medkit1"]
-
-transform/pos = Vector2( 3.5, 3.5 )
-transform/scale = Vector2( 0.416667, 0.346154 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="HealthUP" type="Area2D" parent="." groups=[
-"player",
-]]
-
-editor/display_folded = true
-transform/pos = Vector2( 662, 869 )
-transform/scale = Vector2( 10, 10 )
-input/pickable = false
-shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-script/script = ExtResource( 5 )
-
-[node name="HP Increase Sprite" type="Sprite" parent="HealthUP"]
-
-transform/pos = Vector2( 4, 4 )
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthUP"]
-
-transform/pos = Vector2( 3.5, 3.5 )
-transform/scale = Vector2( 0.416667, 0.346154 )
-shape = SubResource( 2 )
-trigger = false
-_update_shape_index = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="Player" type="KinematicBody2D" parent="." groups=[
 "player",
 ]]
 
 process/pause_mode = 1
-editor/display_folded = true
-transform/pos = Vector2( 134, 356.75 )
+transform/pos = Vector2( 100, -13.5 )
 input/pickable = false
-shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 1.23303, 0, 0, 1.32772, 69.497, 71.7185 )
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 0.95243, 0, 0, 1.32772, 72.6644, 71.7185 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 7 )
+script/script = ExtResource( 3 )
 
 [node name="Player Sprite" type="Sprite" parent="Player"]
 
 transform/pos = Vector2( 57.25, 54.692 )
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 centered = false
 vframes = 12
 hframes = 13
 frame = 52
-script/script = ExtResource( 9 )
+script/script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Player CollisionShape" type="CollisionShape2D" parent="Player"]
 
-transform/pos = Vector2( 69.497, 71.7185 )
-transform/scale = Vector2( 1.23303, 1.32772 )
-shape = SubResource( 3 )
+transform/pos = Vector2( 72.6644, 71.7185 )
+transform/scale = Vector2( 0.95243, 1.32772 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -225,7 +152,7 @@ layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 2.1, 2.1 )
-script/script = ExtResource( 10 )
+script/script = ExtResource( 6 )
 
 [node name="Control" type="Control" parent="Player/Health Canvas"]
 
@@ -253,8 +180,8 @@ margin/left = -9.0
 margin/top = -10.0
 margin/right = 244.0
 margin/bottom = 7.0
-custom_styles/fg = SubResource( 4 )
-custom_styles/bg = SubResource( 5 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
 range/min = 0.0
 range/max = 99.0
 range/step = 1.0
@@ -271,7 +198,7 @@ __meta__ = {
 [node name="HealthOverlay" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( -13, -11.0078 )
-texture = ExtResource( 11 )
+texture = ExtResource( 7 )
 centered = false
 vframes = 20
 hframes = 2
@@ -285,7 +212,7 @@ __meta__ = {
 [node name="Extra Health1" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( -6, -16 )
-texture = ExtResource( 11 )
+texture = ExtResource( 7 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -296,7 +223,7 @@ __meta__ = {
 [node name="Extra Health2" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 2, -16 )
-texture = ExtResource( 11 )
+texture = ExtResource( 7 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -307,7 +234,7 @@ __meta__ = {
 [node name="Extra Health3" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 10, -16 )
-texture = ExtResource( 11 )
+texture = ExtResource( 7 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -318,7 +245,7 @@ __meta__ = {
 [node name="Extra Health4" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 18, -16 )
-texture = ExtResource( 11 )
+texture = ExtResource( 7 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -329,7 +256,7 @@ __meta__ = {
 [node name="Extra Health8" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 50, -16 )
-texture = ExtResource( 11 )
+texture = ExtResource( 7 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -340,7 +267,7 @@ __meta__ = {
 [node name="Extra Health7" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 42, -16 )
-texture = ExtResource( 11 )
+texture = ExtResource( 7 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -351,7 +278,7 @@ __meta__ = {
 [node name="Extra Health6" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 34, -16 )
-texture = ExtResource( 11 )
+texture = ExtResource( 7 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -362,7 +289,7 @@ __meta__ = {
 [node name="Extra Health5" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 26, -16 )
-texture = ExtResource( 11 )
+texture = ExtResource( 7 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -370,10 +297,88 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Medkit1" type="Area2D" parent="." groups=[
+"player",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 230, 1059 )
+transform/scale = Vector2( 5, 5 )
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Medkit Sprite" type="Sprite" parent="Medkit1"]
+
+transform/pos = Vector2( 4, 4 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Medkit1"]
+
+transform/pos = Vector2( 3.5, 3.5 )
+transform/scale = Vector2( 0.416667, 0.346154 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HealthUP" type="Area2D" parent="." groups=[
+"player",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 381, 1056 )
+transform/scale = Vector2( 5, 5 )
+input/pickable = false
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 10 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HP Increase Sprite" type="Sprite" parent="HealthUP"]
+
+transform/pos = Vector2( 4, 4 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthUP"]
+
+transform/pos = Vector2( 3.5, 3.5 )
+transform/scale = Vector2( 0.416667, 0.346154 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="MirrorEnemy" type="KinematicBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1734.88, 1150.68 )
+transform/pos = Vector2( 553.88, 1306.68 )
 input/pickable = false
 shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 0.607608, 0, 0, 0.596992, 0.0688686, -1.76943 )
@@ -383,8 +388,7 @@ collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 12 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 damage = 25
 currentHealth = 100
@@ -445,7 +449,7 @@ autostart = false
 [node name="MirrorEnemy1" type="KinematicBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1262.38, 1435.68 )
+transform/pos = Vector2( 866.38, 1385.68 )
 input/pickable = false
 shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 0.607608, 0, 0, 0.596992, 0.0688686, -1.76943 )

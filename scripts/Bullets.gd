@@ -26,6 +26,8 @@ func _hit_something():
 
 #func _shoot(aim, direction):
 	
+	
+
 func _on_Bullets_body_enter( body ):
 	#print("hello")
 	self.queue_free()

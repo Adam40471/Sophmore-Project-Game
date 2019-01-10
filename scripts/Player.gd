@@ -8,7 +8,7 @@
 
 extends KinematicBody2D
 
-var bulletDirections = {2: [Vector2(4,0),Vector2(19,65)],
+const bulletDirections = {2: [Vector2(4,0),Vector2(19,65)],
  						0: [Vector2(0,4),Vector2(0,0)],
  						4: [Vector2(0,-4),Vector2(0,0)], 
  						1: [Vector2(2, -2),Vector2(15,57)],
@@ -19,6 +19,8 @@ var input_direction = 0
 var direction = 1
 var aim = 2
 
+#TIMERS
+var shootTime = 0
 
 #SPEEDS
 var speed_x = 0
@@ -29,7 +31,7 @@ var velocity = Vector2()
 const MAX_SPEED = 300
 const DECELERATION = 250
 const ACCELERATION = 150
-const GRAVITY = 1000
+const GRAVITY = 1400
 const JUMP_FORCE = 300
 const fallSpeed = 250
 var jumpCounter = 0
@@ -51,11 +53,7 @@ func _input(event):
 		jumpCounter += 1
 	pass
 	
-#RUNS EVERY FRAME	
-func _process(delta):
-	
-#KEYBOARD INPUTS
-
+func inputProccess(delta):
 	if Input.is_key_pressed(KEY_ESCAPE):
         if (get_tree().is_paused()):
             get_tree().set_pause(false)
@@ -84,14 +82,14 @@ func _process(delta):
 		input_direction = -1
 		sprite.move(input_direction)
 	elif Input.is_action_pressed("ui_right"):
-		sprite.move(input_direction)
 		input_direction = 1
+		sprite.move(input_direction)
 	else:
 		input_direction = 0
 		sprite.stopMoving()
 			
-#MOVEMENT CALCULATIONS
 
+func movementProcess(delta):
 	if input_direction == - direction:
 		speed_x /= 3
 	if input_direction:
@@ -105,7 +103,7 @@ func _process(delta):
 		speed_y = fallSpeed
 	
 	velocity.x = speed_x * delta * direction
-	velocity.y = speed_y * delta
+	velocity.y = speed_y * delta 
 	
 	var movement_remainder = move(velocity)
 	
@@ -116,25 +114,40 @@ func _process(delta):
 	#	print("AM I ON SURFACE??")
 		var vector_normal = get_collision_normal()
 		var final_movement = vector_normal.slide(movement_remainder)
-		speed_y = vector_normal.slide(Vector2(0, speed_y)).y	
+		speed_y = vector_normal.slide(Vector2(0, speed_y)).y
 		
 		move(final_movement)
 		
 		if vector_normal == Vector2(0, -1):
 			jumpCounter = 0
-		
-	#SHOOTING
+
+func shootingProcess(delta):
+	if(shootTime > 0): 
+		shootTime -= delta
+	
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
-		var position = get_node("../Player").get_pos()
-		var bullet_scene = preload("res://Bullets.tscn")
-		var bullet = bullet_scene.instance()
-		
-		bullet.velocity = bulletDirections[aim][0]
-		bullet.velocity.x *= direction
-		position += Vector2(73,0)
-		position.x += bulletDirections[aim][1].x * direction
-		position.y += bulletDirections[aim][1].y
-		bullet.set_pos(position)
-		get_tree().get_root().add_child(bullet)
+		if(shootTime <= 0):
+			shootTime = .25
+			var position = get_node("../Player").get_pos()
+			var bullet_scene = preload("res://Bullets.tscn")
+			var bullet = bullet_scene.instance()
+			
+			bullet.velocity = bulletDirections[aim][0]
+			bullet.velocity.x *= direction
+			position += Vector2(73,0)
+			position.x += bulletDirections[aim][1].x * direction
+			position.y += bulletDirections[aim][1].y
+			bullet.set_pos(position)
+			get_tree().get_root().add_child(bullet)
+
+#RUNS EVERY FRAME	
+func _process(delta):
+
+	#INPUT GATHERING
+	inputProccess(delta)
+	#MOVEMENT CALCULATIONS
+	movementProcess(delta)
+	#SHOOTING
+	shootingProcess(delta)
 	
 	sprite.update(delta)	

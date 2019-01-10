@@ -19,4 +19,4 @@ func _input(event):
 #Controls how health regenerates
 func _fixed_process(delta):
 	get_node("Control/ProgressBar").set_value(health)
-	health += delta * 2
+	#health += delta * 2

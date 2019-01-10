@@ -163,7 +163,7 @@ func shootingProcess(delta):
 			
 			bullet.velocity = bulletDirections[aim][0]
 			bullet.velocity.x *= direction
-			position += Vector2(73,0)
+			position += Vector2(0, -72)
 			position.x += bulletDirections[aim][1].x * direction
 			position.y += bulletDirections[aim][1].y
 			bullet.set_pos(position)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://scripts/menuScripts/menuScript.gd" type="Script" id=1]
-[ext_resource path="res://myFont.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://GameFont.fnt" type="BitmapFont" id=2]
 [ext_resource path="res://sprites/SoundEffects/Jump.smp" type="Sample" id=3]
 [ext_resource path="res://sprites/SoundEffects/Laser.smp" type="Sample" id=4]
 [ext_resource path="res://sprites/SoundEffects/Laser2.smp" type="Sample" id=5]
@@ -69,6 +69,10 @@ margin/top = 0.0
 margin/right = 744.0
 margin/bottom = 146.0
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.484375, 1, 1 )
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
@@ -87,6 +91,10 @@ margin/top = 150.0
 margin/right = 744.0
 margin/bottom = 296.0
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.484375, 1, 1 )
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
@@ -105,6 +113,10 @@ margin/top = 300.0
 margin/right = 744.0
 margin/bottom = 446.0
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.484375, 1, 1 )
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
@@ -123,6 +135,10 @@ margin/top = 450.0
 margin/right = 744.0
 margin/bottom = 597.0
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.484375, 1, 1 )
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0

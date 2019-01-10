@@ -3,7 +3,6 @@
 [ext_resource path="res://scripts/enemyScripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Player/Graphics/icon.png" type="Texture" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -25,9 +24,18 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-damage = 25
-currentHealth = 100
 maxHealth = 100
+currentHealth = 100
+damage = 25
+directionH = 1
+directionV = 1
+speedH = 0
+speedV = 0
+speed = 0
+acceleration = 0
+vulnFreeze = true
+vulnElectric = true
+enemyType = 5
 
 [node name="Enemy Sprite" type="Sprite" parent="."]
 

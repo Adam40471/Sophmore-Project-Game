@@ -18,6 +18,6 @@ func _on_Medkit1_body_enter(body):
 		#Adds health
 		body.get_node("Health Canvas").modify_health(10)
 		#Vanishes the item when its touched by player
-		queue_free()
+		self.get_parent().get_parent().get_parent().get_parent().queue_free()
 
 func _process(delta):

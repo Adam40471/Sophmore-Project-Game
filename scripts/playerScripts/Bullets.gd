@@ -15,7 +15,7 @@ func _fixed_process(delta):
 func _on_Bullets_area_enter(area):
 	print(area.get_name())
 	if (area.get_parent().has_method("decrease_Health")):
-		area.get_parent().decrease_Health(10)
+		area.get_parent().decrease_Health(50)
 		self.queue_free()
 	#print("hi")
 	#commented out by Adam so it isnt breaking everything

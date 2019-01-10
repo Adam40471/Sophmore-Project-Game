@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=1]
+[gd_scene load_steps=34 format=1]
 
 [ext_resource path="res://Jump.wav" type="Sample" id=1]
 [ext_resource path="res://Laser.wav" type="Sample" id=2]
@@ -125,7 +125,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=10]
 
 custom_solver_bias = 0.0
-extents = Vector2( 23.1447, 24.2318 )
+extents = Vector2( 23.0901, 29.2625 )
 
 [sub_resource type="RectangleShape2D" id=11]
 
@@ -157,16 +157,6 @@ dark_color = Color( 0.8, 0.8, 0.8, 1 )
 border_size = 0
 border_blend = true
 draw_bg = true
-
-[sub_resource type="RectangleShape2D" id=14]
-
-custom_solver_bias = 0.0
-extents = Vector2( 32.3847, 32.5951 )
-
-[sub_resource type="RectangleShape2D" id=15]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 5.42935 )
 
 [node name="root" type="Node2D"]
 
@@ -300,7 +290,7 @@ _update_shape_index = 6
 [node name="enemySlowTracker1" type="KinematicBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 2471.32, 802.907 )
+transform/pos = Vector2( 1864.11, 843.683 )
 transform/scale = Vector2( 0.36797, 0.248678 )
 input/pickable = false
 collision/layers = 1
@@ -382,6 +372,94 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="enemySlowTracker2" type="KinematicBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 7050.51, 1005.06 )
+transform/scale = Vector2( 0.602241, 0.200272 )
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 11 )
+maxHealth = 200
+currentHealth = 200
+damage = 25
+directionH = 1
+directionV = 1
+speedH = 0
+speedV = 0
+speed = 0
+acceleration = 0
+vulnFreeze = true
+vulnElectric = true
+enemyType = 5
+
+[node name="spriteTracking" type="Sprite" parent="enemySlowTracker2"]
+
+transform/pos = Vector2( 21.9771, 25.0261 )
+transform/rot = 180.0
+transform/scale = Vector2( 7.88235, 89.8698 )
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="playerDamage" type="Area2D" parent="enemySlowTracker2"]
+
+transform/pos = Vector2( 28.7686, 2.11646 )
+transform/rot = 180.0
+transform/scale = Vector2( 0.467093, 0.753986 )
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -32.4534 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="damagePlayer" type="CollisionShape2D" parent="enemySlowTracker2/playerDamage"]
+
+transform/pos = Vector2( 0, -32.4534 )
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="aggroArea" type="Area2D" parent="enemySlowTracker2"]
+
+transform/pos = Vector2( 26.8975, 0.73291 )
+transform/rot = 180.0
+transform/scale = Vector2( 0.200702, 0.102813 )
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1.25954, 0, 0, 11.236, -779.486, -12325.3 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="aggroShape" type="CollisionShape2D" parent="enemySlowTracker2/aggroArea"]
+
+transform/pos = Vector2( -779.486, -12325.3 )
+transform/scale = Vector2( 1.25954, 11.236 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="enemyFastTracker1" type="KinematicBody2D" parent="."]
 
 editor/display_folded = true
@@ -392,8 +470,8 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 11 )
-maxHealth = 200
-currentHealth = 200
+maxHealth = 40
+currentHealth = 40
 damage = 25
 directionH = 1
 directionV = 1
@@ -479,8 +557,8 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 11 )
-maxHealth = 200
-currentHealth = 200
+maxHealth = 40
+currentHealth = 40
 damage = 25
 directionH = 1
 directionV = 1
@@ -569,8 +647,8 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 11 )
-maxHealth = 200
-currentHealth = 200
+maxHealth = 40
+currentHealth = 40
 damage = 25
 directionH = 1
 directionV = 1
@@ -659,8 +737,8 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 11 )
-maxHealth = 200
-currentHealth = 200
+maxHealth = 40
+currentHealth = 40
 damage = 25
 directionH = 1
 directionV = 1
@@ -763,7 +841,8 @@ enemyType = 1
 
 [node name="enemyFlyingPath1" type="Path2D" parent="enemyVerticallFlying1"]
 
-transform/pos = Vector2( 311.845, 160.834 )
+transform/pos = Vector2( 458.044, 362.551 )
+transform/rot = -156.859
 curve = SubResource( 5 )
 
 [node name="flyingPath" type="PathFollow2D" parent="enemyVerticallFlying1/enemyFlyingPath1"]
@@ -848,7 +927,7 @@ enemyType = 1
 
 [node name="enemyFlyingPath1" type="Path2D" parent="enemyVerticalFlying2"]
 
-transform/pos = Vector2( 346.845, 200.834 )
+transform/pos = Vector2( 282.176, 175.182 )
 curve = SubResource( 5 )
 
 [node name="flyingPath" type="PathFollow2D" parent="enemyVerticalFlying2/enemyFlyingPath1"]
@@ -933,7 +1012,7 @@ enemyType = 1
 
 [node name="enemyFlyingPath1" type="Path2D" parent="enemyVerticalFlying3"]
 
-transform/pos = Vector2( 311.845, 160.834 )
+transform/pos = Vector2( 141.588, 151.581 )
 curve = SubResource( 5 )
 
 [node name="flyingPath" type="PathFollow2D" parent="enemyVerticalFlying3/enemyFlyingPath1"]
@@ -994,6 +1073,92 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="enemyVerticalFlying6" type="KinematicBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 4241.12, 1591.12 )
+transform/rot = 179.183
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 11 )
+maxHealth = 200
+currentHealth = 200
+damage = 25
+directionH = 1
+directionV = 1
+speedH = 0
+speedV = 0
+speed = 0
+acceleration = 0
+vulnFreeze = true
+vulnElectric = true
+enemyType = 1
+
+[node name="enemyFlyingPath1" type="Path2D" parent="enemyVerticalFlying6"]
+
+transform/pos = Vector2( 141.588, 151.581 )
+curve = SubResource( 5 )
+
+[node name="flyingPath" type="PathFollow2D" parent="enemyVerticalFlying6/enemyFlyingPath1"]
+
+transform/pos = Vector2( -19.7511, -85.0229 )
+transform/rot = 0.000111632
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = true
+cubic_interp = true
+loop = true
+lookahead = 4.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="flyingAnimation" type="AnimationPlayer" parent="enemyVerticalFlying6/enemyFlyingPath1/flyingPath"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/FlyingEnemy1 = SubResource( 6 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "FlyingEnemy1"
+
+[node name="playerDamage" type="Area2D" parent="enemyVerticalFlying6/enemyFlyingPath1/flyingPath"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 3.30791, 0, 0, 3.22309, -1.48102, 0.098657 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="damagePlayer" type="CollisionShape2D" parent="enemyVerticalFlying6/enemyFlyingPath1/flyingPath/playerDamage"]
+
+transform/pos = Vector2( -1.48102, 0.098657 )
+transform/scale = Vector2( 3.30791, 3.22309 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="flyingEnemySprite" type="Sprite" parent="enemyVerticalFlying6/enemyFlyingPath1/flyingPath/playerDamage"]
+
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="enemyVerticalFlying4" type="KinematicBody2D" parent="."]
 
 editor/display_folded = true
@@ -1018,7 +1183,7 @@ enemyType = 1
 
 [node name="enemyFlyingPath1" type="Path2D" parent="enemyVerticalFlying4"]
 
-transform/pos = Vector2( 311.845, 160.834 )
+transform/pos = Vector2( 139.737, 25.7389 )
 curve = SubResource( 5 )
 
 [node name="flyingPath" type="PathFollow2D" parent="enemyVerticalFlying4/enemyFlyingPath1"]
@@ -1079,10 +1244,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="enemyHorizontalMover1" type="KinematicBody2D" parent="."]
+[node name="enemyVerticalFlying5" type="KinematicBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1880.13, 1197.23 )
+transform/pos = Vector2( 2081.98, 720.636 )
+transform/rot = -170.724
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -1099,20 +1265,17 @@ speed = 0
 acceleration = 0
 vulnFreeze = true
 vulnElectric = true
-enemyType = 2
+enemyType = 1
 
-[node name="enemyMoveHorizontal1" type="Path2D" parent="enemyHorizontalMover1"]
+[node name="enemyFlyingPath1" type="Path2D" parent="enemyVerticalFlying5"]
 
-transform/pos = Vector2( -317.984, 0 )
-curve = SubResource( 8 )
-__meta__ = {
-"_edit_lock_": true
-}
+transform/pos = Vector2( 139.737, 25.7389 )
+curve = SubResource( 5 )
 
-[node name="enemyMoveHorizontal" type="PathFollow2D" parent="enemyHorizontalMover1/enemyMoveHorizontal1"]
+[node name="flyingPath" type="PathFollow2D" parent="enemyVerticalFlying5/enemyFlyingPath1"]
 
-transform/pos = Vector2( 122.293, 0.18103 )
-transform/rot = 1.13442
+transform/pos = Vector2( -19.7511, -85.0229 )
+transform/rot = 0.000111632
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0
@@ -1124,48 +1287,53 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="horizontalAnimation" type="AnimationPlayer" parent="enemyHorizontalMover1/enemyMoveHorizontal1/enemyMoveHorizontal"]
+[node name="flyingAnimation" type="AnimationPlayer" parent="enemyVerticalFlying5/enemyFlyingPath1/flyingPath"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/horiztonalMove = SubResource( 9 )
+anims/FlyingEnemy1 = SubResource( 6 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
-autoplay = "horiztonalMove"
+autoplay = "FlyingEnemy1"
 
-[node name="playerDamage" type="Area2D" parent="enemyHorizontalMover1/enemyMoveHorizontal1/enemyMoveHorizontal"]
+[node name="playerDamage" type="Area2D" parent="enemyVerticalFlying5/enemyFlyingPath1/flyingPath"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 10 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -11.0768, 3.78149 )
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 3.30791, 0, 0, 3.22309, -1.48102, 0.098657 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="horizontalEnemy" type="Sprite" parent="enemyHorizontalMover1/enemyMoveHorizontal1/enemyMoveHorizontal/playerDamage"]
+[node name="damagePlayer" type="CollisionShape2D" parent="enemyVerticalFlying5/enemyFlyingPath1/flyingPath/playerDamage"]
 
-transform/pos = Vector2( -10.8469, 3.82227 )
-transform/scale = Vector2( 0.661032, 0.880556 )
+transform/pos = Vector2( -1.48102, 0.098657 )
+transform/scale = Vector2( 3.30791, 3.22309 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="flyingEnemySprite" type="Sprite" parent="enemyVerticalFlying5/enemyFlyingPath1/flyingPath/playerDamage"]
+
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyHorizontalMover1/enemyMoveHorizontal1/enemyMoveHorizontal/playerDamage"]
-
-transform/pos = Vector2( -11.0768, 3.78149 )
-shape = SubResource( 10 )
-trigger = false
-_update_shape_index = 0
-
 [node name="enemyHorizontalMover2" type="KinematicBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 530.732, 1668.01 )
+transform/pos = Vector2( 1879.41, 862.665 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -1238,9 +1406,261 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyHorizontalMover2/enemyMoveHorizontal1/enemyMoveHorizontal/playerDamage"]
+[node name="playerDamage" type="CollisionShape2D" parent="enemyHorizontalMover2/enemyMoveHorizontal1/enemyMoveHorizontal/playerDamage"]
 
 transform/pos = Vector2( -11.0768, 3.78149 )
+shape = SubResource( 10 )
+trigger = false
+_update_shape_index = 0
+
+[node name="enemyHorizontalMover3" type="KinematicBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 4904.47, 1645.29 )
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 11 )
+maxHealth = 200
+currentHealth = 200
+damage = 25
+directionH = 1
+directionV = 1
+speedH = 0
+speedV = 0
+speed = 0
+acceleration = 0
+vulnFreeze = true
+vulnElectric = true
+enemyType = 2
+
+[node name="enemyMoveHorizontal1" type="Path2D" parent="enemyHorizontalMover3"]
+
+transform/pos = Vector2( -317.984, 0 )
+curve = SubResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="enemyMoveHorizontal" type="PathFollow2D" parent="enemyHorizontalMover3/enemyMoveHorizontal1"]
+
+transform/pos = Vector2( 122.293, 0.18103 )
+transform/rot = 1.13442
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = true
+cubic_interp = true
+loop = true
+lookahead = 4.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="horizontalAnimation" type="AnimationPlayer" parent="enemyHorizontalMover3/enemyMoveHorizontal1/enemyMoveHorizontal"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/horiztonalMove = SubResource( 9 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "horiztonalMove"
+
+[node name="playerDamage" type="Area2D" parent="enemyHorizontalMover3/enemyMoveHorizontal1/enemyMoveHorizontal"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 10 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -11.0768, 3.78149 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="horizontalEnemy" type="Sprite" parent="enemyHorizontalMover3/enemyMoveHorizontal1/enemyMoveHorizontal/playerDamage"]
+
+transform/pos = Vector2( -10.8469, 3.82227 )
+transform/scale = Vector2( 0.661032, 0.880556 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="damagePlayer" type="CollisionShape2D" parent="enemyHorizontalMover3/enemyMoveHorizontal1/enemyMoveHorizontal/playerDamage"]
+
+transform/pos = Vector2( -11.0768, 3.78149 )
+shape = SubResource( 10 )
+trigger = false
+_update_shape_index = 0
+
+[node name="enemyHorizontalMover4" type="KinematicBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 10892.4, 433.617 )
+transform/rot = -89.4018
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 11 )
+maxHealth = 200
+currentHealth = 200
+damage = 25
+directionH = 1
+directionV = 1
+speedH = 0
+speedV = 0
+speed = 0
+acceleration = 0
+vulnFreeze = true
+vulnElectric = true
+enemyType = 2
+
+[node name="enemyMoveHorizontal1" type="Path2D" parent="enemyHorizontalMover4"]
+
+transform/pos = Vector2( -317.984, 0 )
+curve = SubResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="enemyMoveHorizontal" type="PathFollow2D" parent="enemyHorizontalMover4/enemyMoveHorizontal1"]
+
+transform/pos = Vector2( 122.293, 0.18103 )
+transform/rot = 1.13442
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = true
+cubic_interp = true
+loop = true
+lookahead = 4.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="horizontalAnimation" type="AnimationPlayer" parent="enemyHorizontalMover4/enemyMoveHorizontal1/enemyMoveHorizontal"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/horiztonalMove = SubResource( 9 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "horiztonalMove"
+
+[node name="playerDamage" type="Area2D" parent="enemyHorizontalMover4/enemyMoveHorizontal1/enemyMoveHorizontal"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 10 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -11.0768, 3.78149 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="horizontalEnemy" type="Sprite" parent="enemyHorizontalMover4/enemyMoveHorizontal1/enemyMoveHorizontal/playerDamage"]
+
+transform/pos = Vector2( -10.8469, 3.82227 )
+transform/scale = Vector2( 0.661032, 0.880556 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="playerDamage" type="CollisionShape2D" parent="enemyHorizontalMover4/enemyMoveHorizontal1/enemyMoveHorizontal/playerDamage"]
+
+transform/pos = Vector2( -11.0768, 3.78149 )
+shape = SubResource( 10 )
+trigger = false
+_update_shape_index = 0
+
+[node name="enemyHorizontalMover5" type="KinematicBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 11200, 1544.52 )
+transform/rot = -89.4018
+transform/scale = Vector2( 0.307835, 1 )
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 11 )
+maxHealth = 200
+currentHealth = 200
+damage = 25
+directionH = 1
+directionV = 1
+speedH = 0
+speedV = 0
+speed = 0
+acceleration = 0
+vulnFreeze = true
+vulnElectric = true
+enemyType = 2
+
+[node name="enemyMoveHorizontal1" type="Path2D" parent="enemyHorizontalMover5"]
+
+transform/pos = Vector2( -317.984, 0 )
+curve = SubResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="enemyMoveHorizontal" type="PathFollow2D" parent="enemyHorizontalMover5/enemyMoveHorizontal1"]
+
+transform/pos = Vector2( 122.293, 0.18103 )
+transform/rot = 1.13442
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = true
+cubic_interp = true
+loop = true
+lookahead = 4.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="horizontalAnimation" type="AnimationPlayer" parent="enemyHorizontalMover5/enemyMoveHorizontal1/enemyMoveHorizontal"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/horiztonalMove = SubResource( 9 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "horiztonalMove"
+
+[node name="playerDamage" type="Area2D" parent="enemyHorizontalMover5/enemyMoveHorizontal1/enemyMoveHorizontal"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 10 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -9.11572, 3.6123 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="horizontalEnemy" type="Sprite" parent="enemyHorizontalMover5/enemyMoveHorizontal1/enemyMoveHorizontal/playerDamage"]
+
+transform/pos = Vector2( -10.8469, 3.82227 )
+transform/scale = Vector2( 0.661032, 0.880556 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyHorizontalMover5/enemyMoveHorizontal1/enemyMoveHorizontal/playerDamage"]
+
+transform/pos = Vector2( -9.11572, 3.6123 )
 shape = SubResource( 10 )
 trigger = false
 _update_shape_index = 0
@@ -1472,86 +1892,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="MirrorEnemy" type="KinematicBody2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 553.88, 1306.68 )
-input/pickable = false
-shapes/0/shape = SubResource( 14 )
-shapes/0/transform = Matrix32( 0.607608, 0, 0, 0.596992, 0.0688686, -1.76943 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 11 )
-__meta__ = {
-"_edit_group_": true
-}
-maxHealth = 100
-currentHealth = 100
-damage = 25
-directionH = 1
-directionV = 1
-speedH = 0
-speedV = 0
-speed = 0
-acceleration = 0
-vulnFreeze = true
-vulnElectric = true
-enemyType = 1
-
-[node name="Enemy Sprite" type="Sprite" parent="MirrorEnemy"]
-
-transform/scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 14 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MirrorEnemy"]
-
-transform/pos = Vector2( 0.0688686, -1.76943 )
-transform/scale = Vector2( 0.607608, 0.596992 )
-shape = SubResource( 14 )
-trigger = false
-_update_shape_index = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Area2D" type="Area2D" parent="MirrorEnemy"]
-
-input/pickable = true
-shapes/0/shape = SubResource( 15 )
-shapes/0/transform = Matrix32( 2.26923, 0, 0, 4.07873, -0.431214, -1.87447 )
-shapes/0/trigger = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
-
-[node name="TriggerCollision" type="CollisionShape2D" parent="MirrorEnemy/Area2D"]
-
-transform/pos = Vector2( -0.431214, -1.87447 )
-transform/scale = Vector2( 2.26923, 4.07873 )
-shape = SubResource( 15 )
-trigger = true
-_update_shape_index = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Damage Delay" type="Timer" parent="MirrorEnemy"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = false
-
 [node name="pause_popup" parent="." instance=ExtResource( 20 )]
 
 editor/display_folded = true
@@ -1574,8 +1914,6 @@ visibility/visible = false
 [connection signal="body_enter" from="enemyVerticalFlying2/enemyFlyingPath1/flyingPath/playerDamage" to="enemyVerticalFlying2" method="_on_playerDamage_body_enter"]
 
 [connection signal="body_enter" from="enemyVerticalFlying3/enemyFlyingPath1/flyingPath/playerDamage" to="enemyVerticalFlying3" method="_on_playerDamage_body_enter"]
-
-[connection signal="body_enter" from="MirrorEnemy/Area2D" to="MirrorEnemy" method="_on_Area2D_body_enter"]
 
 
 [editable path="pause_popup"]

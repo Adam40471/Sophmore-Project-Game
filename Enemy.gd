@@ -76,7 +76,8 @@ func _on_Area2D_body_enter( body ):
 	var healthDamage = -50
 	
 	if (groups.has("player")):
-		body.get_node("Health Canvas").modify_health(-50)
+		print("YOU DIED")
+		get_tree().quit()
 		#speed_y = -JUMP_FORCE - 200
 		#pass
 		#queue_free()

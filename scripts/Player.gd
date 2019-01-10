@@ -8,6 +8,10 @@
 
 extends KinematicBody2D
 
+var bulletDirections = {"Right": Vector2(4,0), "Left": Vector2(-4,0),
+ "Up": Vector2(0,4), "Down": Vector2(0,-4), "UpLeft": Vector2(-2,-2),
+ "UpRight": Vector2(2, -2), "DownLeft": Vector2(-2,2), "DownRight": Vector2(2,2)}
+
 #DIRECTIONS
 var input_direction = 0
 var direction = 1
@@ -20,10 +24,10 @@ var speed_y = 0
 var velocity = Vector2()
 
 #CONSTANTS
-const MAX_SPEED = 150
+const MAX_SPEED = 300
 const DECELERATION = 250
 const ACCELERATION = 150
-const GRAVITY = 1000
+const GRAVITY = 1400
 const JUMP_FORCE = 300
 const fallSpeed = 250
 var jumpCounter = 0
@@ -50,16 +54,28 @@ func _process(delta):
 	
 #KEYBOARD INPUTS
 
+	if Input.is_key_pressed(KEY_ESCAPE):
+        if (get_tree().is_paused()):
+            get_tree().set_pause(false)
+        else:
+            get_tree().set_pause(true)
+            var pos = get_node("../Player").get_pos()
+            get_node("../pause_popup").set_pos(Vector2(pos.x - 80, pos.y - 120))
+            get_node("../pause_popup").show()
+
 	if input_direction:
 		direction = input_direction
 	
 	if Input.is_action_pressed("ui_up"):
 		sprite.setAim(1)
+		aim = 1
 		
 	elif Input.is_action_pressed("ui_down"):
 		sprite.setAim(3)
+		aim = 3
 	else:
 		sprite.setAim(2)
+		aim = 2
 	
 	
 	if Input.is_action_pressed("ui_left"):
@@ -105,4 +121,31 @@ func _process(delta):
 		if vector_normal == Vector2(0, -1):
 			jumpCounter = 0
 		
+	#SHOOTING
+	if Input.is_mouse_button_pressed(BUTTON_LEFT):
+		var position = get_node("../Player").get_pos()
+		var bullet_scene = preload("res://Bullets.tscn")
+		var bullet = bullet_scene.instance()
+		print("Aim: " + str(aim))
+		print("Direction: " + str(direction))
+		if (aim == 1 && direction == -1): #UpLeft
+			bullet.velocity = bulletDirections.UpLeft
+			bullet.set_pos(Vector2(position.x + 58, position.y + 57))
+		elif (aim == 2 && direction == -1): #Left
+			bullet.velocity = bulletDirections.Left
+			bullet.set_pos(Vector2(position.x + 55, position.y + 65))
+		elif (aim == 3 && direction == -1): #DownLeft
+			bullet.velocity = bulletDirections.DownLeft
+			bullet.set_pos(Vector2(position.x + 58, position.y + 77))
+		elif (aim == 1 && direction == 1): #UpRight
+			bullet.velocity = bulletDirections.UpRight
+			bullet.set_pos(Vector2(position.x + 88, position.y + 57))
+		elif (aim == 2 && direction == 1): #Right
+			bullet.velocity = bulletDirections.Right
+			bullet.set_pos(Vector2(position.x + 92, position.y + 65))
+		else: #DownRight
+			bullet.velocity = bulletDirections.DownRight
+			bullet.set_pos(Vector2(position.x + 88, position.y + 78))
+		get_tree().get_root().add_child(bullet)
+	
 	sprite.update(delta)	

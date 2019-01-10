@@ -64,9 +64,6 @@ margin/right = 909.0
 margin/bottom = 599.0
 alignment = 0
 script/script = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="MenuBackground" parent="MainMenu" instance=ExtResource( 2 )]
 
@@ -79,12 +76,12 @@ transform/scale = Vector2( 3.02891, 2.67488 )
 visibility/blend_mode = 4
 focus/ignore_mouse = false
 focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 744.0
-margin/bottom = 146.0
+size_flags/horizontal = 0
+size_flags/vertical = 1
+margin/left = 337.0
+margin/top = 50.0
+margin/right = 406.0
+margin/bottom = 95.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0.0360107, 0.236714, 0.921875, 1 )
@@ -102,12 +99,12 @@ flat = true
 visibility/blend_mode = 4
 focus/ignore_mouse = false
 focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 150.0
-margin/right = 744.0
-margin/bottom = 296.0
+size_flags/horizontal = 0
+size_flags/vertical = 1
+margin/left = 313.0
+margin/top = 200.0
+margin/right = 430.0
+margin/bottom = 245.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0.0360107, 0.236714, 0.921875, 1 )
@@ -125,12 +122,12 @@ flat = true
 visibility/blend_mode = 4
 focus/ignore_mouse = false
 focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 300.0
-margin/right = 744.0
-margin/bottom = 446.0
+size_flags/horizontal = 0
+size_flags/vertical = 1
+margin/left = 315.0
+margin/top = 350.0
+margin/right = 429.0
+margin/bottom = 395.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0.0360107, 0.236714, 0.921875, 1 )
@@ -148,12 +145,12 @@ flat = true
 visibility/blend_mode = 4
 focus/ignore_mouse = false
 focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 450.0
-margin/right = 744.0
-margin/bottom = 597.0
+size_flags/horizontal = 0
+size_flags/vertical = 1
+margin/left = 337.0
+margin/top = 501.0
+margin/right = 406.0
+margin/bottom = 546.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0.0360107, 0.236714, 0.921875, 1 )
@@ -166,11 +163,12 @@ shortcut = null
 text = "Exit"
 flat = true
 
-[node name="black" type="Sprite" parent="."]
+[node name="black" type="Sprite" parent="MainMenu"]
 
-visibility/self_opacity = 0.5
-transform/pos = Vector2( 537.662, 298.215 )
-transform/scale = Vector2( 2.66666, 3.57666 )
+visibility/self_opacity = 0.6
+visibility/behind_parent = true
+transform/pos = Vector2( 365.662, 296.215 )
+transform/scale = Vector2( 1, 3.57666 )
 texture = ExtResource( 4 )
 
 [node name="SamplePlayer" type="SamplePlayer" parent="."]

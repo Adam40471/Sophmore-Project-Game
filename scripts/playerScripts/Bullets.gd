@@ -13,10 +13,15 @@ func _fixed_process(delta):
 #		print("hi")
 
 func _on_Bullets_area_enter(area):
+	print(area.get_name())
+	if (area.get_parent().has_method("decrease_Health")):
+		area.get_parent().decrease_Health(10)
+		self.queue_free()
 	#print("hi")
 	#commented out by Adam so it isnt breaking everything
 	#area.queue_free()
-	self.queue_free()
+	if (area.get_name() != "aggroArea"):
+		self.queue_free()
 		
 func _hit_something():
 	if (hit):
@@ -32,3 +37,6 @@ func _hit_something():
 func _on_Bullets_body_enter( body ):
 	#print("hello")
 	self.queue_free()
+	
+	
+	

@@ -12,6 +12,7 @@ export (int) var directionH = 1
 export (int) var directionV = 1
 export (int) var speedH = 0
 export (int) var speedV = 0
+export (int) var speed = 0
 export (int) var acceleration = 0
 
 #WEAPON SPECIFIC VARIABLES
@@ -32,40 +33,62 @@ export (bool) var vulnElectric = true
 #6 is Boss one, bullet-Hell, stationary
 
 # [Speed V, Speed H, Acceleration, Damage Amount, Actions Function Reference]	
-var enemyLibrary = {1: [0, 150, 10, null], 2: [150, 0, 0, null], 3: [0, 450, 5, null], 4: [450, 0, 5, null], 5: [200, 200, 2.5, funcref(self, "action1")], 6: [0, 0, 0, funcref(self, "action2")]}
+var enemyLibrary = {1: [0, 150, 10, 5, null], 2: [150, 0, 0, 5, null], 3: [0, 450, 5, 5, null], 4: [450, 0, 5, 5, null], 5: [200, 200, 2.5, 10, funcref(self, "action1")], 6: [0, 0, 0, 10, funcref(self, "action2")]}
 
 export (int) var enemyType = 5
 
 #This allows the script to run when the game begins.
 func _ready():
 	set_process(true)
+	set_fixed_process(true)
 	set_process_input(true)
 	
 	speedH = enemyLibrary[enemyType][0]
 	speedV = enemyLibrary[enemyType][1]
 	acceleration = enemyLibrary[enemyType][2]
-
+	damage = enemyLibrary[enemyType][3]
 
 #RUNS EVERY FRAME AND SETS ENEMY TYPE
-func _process(delta):
+func _fixed_process(delta):
 	#Enemy type should be set before this point
 	
 	#if normal default movement will call action
-	if (enemyLibrary[enemyType][3] == null):
+	if (enemyLibrary[enemyType][4] == null):
 		action(delta)
 	else: #if special movement call enemy specific function to override
-		enemyLibrary[enemyType][3].call_func(delta)
+		enemyLibrary[enemyType][4].call_func(delta)
 	
 #PUT DEFAULT ACTION/MOVEMENT CODE HERE
 func action(delta):
 	#print("default")
-	pass
-#PUT OVERRIDING ACTION/MOVEMENT CODE HERE - CURRENTLY USED IN ENEMY 5
-func action1(delta):
-	#print("act1")
+	var velocity = Vector2()
 	pass
 	
-func action2(delta):
+#PUT OVERRIDING ACTION/MOVEMENT CODE HERE - CURRENTLY USED IN ENEMY 5
+func action1(delta): #tracking enemy
+	#print("act1")
+	var speed = 100
+	var track = Vector2()
+	var body = get_node("aggroArea").get_overlapping_bodies()
+	
+	#Tracks whether not the player is inside the enemy's Area2D (aggroArea).
+	#If the player is within the Area2D, the enemy will begin to track the player.
+	if(body.size() != 0):
+		for tracker in body:
+			if(tracker.is_in_group("player")):				
+				if(tracker.get_global_pos().x < self.get_global_pos().x):
+					track += Vector2(-1,0)
+				if(tracker.get_global_pos().x > self.get_global_pos().x +5):
+					track += Vector2(1,0)
+				if(tracker.get_global_pos().y < self.get_global_pos().y +5):
+					track += Vector2(0,-1)
+				if(tracker.get_global_pos().y > self.get_global_pos().y):
+					track += Vector2(0,1)
+					
+	track = track.normalized() * speed * delta
+	move(track)
+	
+func action2(delta): #Mirror enemy.
 	print("act2")
 	
 #Placed here by ADAM; Decrements enemy Health
@@ -84,22 +107,15 @@ func _on_Area2D_body_exit( body ):
 	
 	if (groups.has("cage")):
 		directionH = -directionH
-		directionV = -directionV
+		directionV = -directionV	
 	
-	#func _on_Area2D_body_enter(body):
-    #print(str('Body entered: ', body.get_name()))
-	
-	#func _on_Area2D_body_enter(body):
-    #if body.is_in_group("player"):
-     #print(str('Player has entered')
-	
-	
-func _on_Area2D_body_enter( body ):
+func _on_playerDamage_body_enter( body ):
+	print(body.get_name())
 	var groups = body.get_groups()
 	#Print for testing purposes
 	print(str('Body entered: ', body.get_name()))
 	if (groups.has("player")):
 		body.get_node("Health Canvas").modify_health(-damage)
-		
-	elif (groups.has("bullet")):
-		self.decrease_Health(50)
+
+func _on_playerDamage_area_enter( area ):
+	pass

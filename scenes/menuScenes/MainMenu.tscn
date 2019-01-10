@@ -1,45 +1,53 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://scripts/menuScripts/menuScript.gd" type="Script" id=1]
 [ext_resource path="res://scenes/menuScenes/MenuBackground.scn" type="PackedScene" id=2]
 [ext_resource path="res://GameFont.fnt" type="BitmapFont" id=3]
-[ext_resource path="res://sprites/SoundEffects/Jump.smp" type="Sample" id=4]
-[ext_resource path="res://sprites/SoundEffects/Laser.smp" type="Sample" id=5]
-[ext_resource path="res://sprites/SoundEffects/Laser2.smp" type="Sample" id=6]
-[ext_resource path="res://sprites/SoundEffects/Laser3.smp" type="Sample" id=7]
-[ext_resource path="res://sprites/SoundEffects/Run.smp" type="Sample" id=8]
+[ext_resource path="res://sprites/black.tex" type="Texture" id=4]
+[ext_resource path="res://Death.wav" type="Sample" id=5]
+[ext_resource path="res://Jump.wav" type="Sample" id=6]
+[ext_resource path="res://Laser.wav" type="Sample" id=7]
+[ext_resource path="res://Laser2.wav" type="Sample" id=8]
+[ext_resource path="res://Laser3.wav" type="Sample" id=9]
+[ext_resource path="res://Run.wav" type="Sample" id=10]
 
 [sub_resource type="SampleLibrary" id=1]
 
-samples/Jump = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 4 )
-}
-samples/Laser = {
+samples/Death = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 5 )
 }
-samples/Laser2 = {
+samples/Jump = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 6 )
 }
-samples/Laser3 = {
+samples/Laser = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 7 )
 }
-samples/Run = {
+samples/Laser2 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 8 )
+}
+samples/Laser3 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 9 )
+}
+samples/Run = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 10 )
 }
 
 [node name="Node" type="Node"]
@@ -63,11 +71,12 @@ __meta__ = {
 [node name="MenuBackground" parent="MainMenu" instance=ExtResource( 2 )]
 
 visibility/behind_parent = true
-transform/pos = Vector2( -666.688, -340.221 )
-transform/scale = Vector2( 2.0107, 1.87168 )
+transform/pos = Vector2( -944.238, -543.585 )
+transform/scale = Vector2( 3.02891, 2.67488 )
 
 [node name="Play" type="Button" parent="MainMenu"]
 
+visibility/blend_mode = 4
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -77,10 +86,10 @@ margin/top = 0.0
 margin/right = 744.0
 margin/bottom = 146.0
 custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color_disabled = Color( 0.0360107, 0.236714, 0.921875, 1 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0.0360107, 0.236714, 0.921875, 1 )
-custom_colors/font_color_hover = Color( 0.0360107, 0.236714, 0.921875, 1 )
-custom_colors/font_color_pressed = Color( 0.0360107, 0.236714, 0.921875, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
@@ -90,6 +99,7 @@ flat = true
 
 [node name="Options" type="Button" parent="MainMenu"]
 
+visibility/blend_mode = 4
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -99,10 +109,10 @@ margin/top = 150.0
 margin/right = 744.0
 margin/bottom = 296.0
 custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color_disabled = Color( 0.0360107, 0.236714, 0.921875, 1 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0.0360107, 0.236714, 0.921875, 1 )
-custom_colors/font_color_hover = Color( 0.0360107, 0.236714, 0.921875, 1 )
-custom_colors/font_color_pressed = Color( 0.0360107, 0.236714, 0.921875, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
@@ -112,6 +122,7 @@ flat = true
 
 [node name="Credits" type="Button" parent="MainMenu"]
 
+visibility/blend_mode = 4
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -121,10 +132,10 @@ margin/top = 300.0
 margin/right = 744.0
 margin/bottom = 446.0
 custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color_disabled = Color( 0.0360107, 0.236714, 0.921875, 1 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0.0360107, 0.236714, 0.921875, 1 )
-custom_colors/font_color_hover = Color( 0.0360107, 0.236714, 0.921875, 1 )
-custom_colors/font_color_pressed = Color( 0.0360107, 0.236714, 0.921875, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
@@ -134,6 +145,7 @@ flat = true
 
 [node name="Exit" type="Button" parent="MainMenu"]
 
+visibility/blend_mode = 4
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -143,10 +155,10 @@ margin/top = 450.0
 margin/right = 744.0
 margin/bottom = 597.0
 custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color_disabled = Color( 0.0360107, 0.236714, 0.921875, 1 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0.0360107, 0.236714, 0.921875, 1 )
-custom_colors/font_color_hover = Color( 0.0360107, 0.236714, 0.921875, 1 )
-custom_colors/font_color_pressed = Color( 0.0360107, 0.236714, 0.921875, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
@@ -154,11 +166,18 @@ shortcut = null
 text = "Exit"
 flat = true
 
+[node name="black" type="Sprite" parent="."]
+
+visibility/self_opacity = 0.5
+transform/pos = Vector2( 537.662, 298.215 )
+transform/scale = Vector2( 2.66666, 3.57666 )
+texture = ExtResource( 4 )
+
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 
-config/polyphony = 3
+config/polyphony = 10
 config/samples = SubResource( 1 )
-default/volume_db = 0.0
+default/volume_db = 1.0
 default/pitch_scale = 1.0
 default/pan = 0.0
 default/depth = 0.0

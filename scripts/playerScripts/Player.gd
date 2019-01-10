@@ -146,7 +146,7 @@ func inputProccess(delta):
 	#DYNAMIC JUMPING CODE
 	#print("Timer: ", jumpTimer, "   canJump:", canJumpNextFrame,  "   Input:",Input.is_action_pressed("jump"))
 	if (jumpTimer <= 0 and canJumpNextFrame and Input.is_action_pressed("jump")):
-		jumpTimer = .15
+		jumpTimer = .20
 		#print("JumpTimer")
 		
 	#if (Input.is_action_pressed("jump") and jumpTimer > 0 and jumpCounter == 0) :

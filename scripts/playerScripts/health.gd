@@ -32,7 +32,7 @@ func _ready():
 	get_node("Control/Extra Health8").set_frame(255)
 	pass
 
-#Here for testing. Get rid of later. 
+#Here for testing. REMOVE IN FINAL VERSION
 func _input(event):
 	#Damages the player - implement in enemy script by doing 
 	#get_node("Player/Health Canvas/Control/ProgressBar").modify_health(negative integer)
@@ -40,7 +40,7 @@ func _input(event):
 		modify_health(-5)
 	#Heals the player (implement Medkit item)
 	if event.is_action_pressed("HPIncrease"):
-		modify_health(5)
+		modify_health(25)
 	#Gives an Extra Health Crystal (implement MaxHPIncrease item)
 	if event.is_action_pressed("HealthTank"):
 		HealthTank()
@@ -78,9 +78,7 @@ func modify_health(amount):
 	#Will kill the player if their health is 0
 	if (health <= 0):
 		#Player dies
-		#get_tree().change_scene("res://scenes/menuScenes/MainMenu.tscn")
 		get_node("/root/global").setScene("res://scenes/menuScenes/MainMenu.tscn")
-		
 		
 	#Manages the appearance of Extra Health Crystal icons
 	if(maxHealth / 100 >= 1):

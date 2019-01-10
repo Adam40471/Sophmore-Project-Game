@@ -9,8 +9,6 @@ func _ready():
 
 func _fixed_process(delta):
 	self.set_pos(self.get_pos() + velocity)
-#	if (bodies.size() > 0):
-#		print("hi")
 
 func damageable(area):
 	if (area.get_name() != "aggroArea" && area.get_parent().has_method("decrease_Health")):

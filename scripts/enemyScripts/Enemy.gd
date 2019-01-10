@@ -2,10 +2,15 @@ extends KinematicBody2D
 
 #ENEMY MASTER SCRIPT -----------------------------------
 
+var audioPlayer
+var runAudioInt = null
+
 #BASIC STATISTIC VARIABLES
 export (int) var maxHealth = 200
 export (int) var currentHealth = 200
 export (int) var damage = 25
+const GRAVITY = 200.0
+var velocity = Vector2()
 
 #BASIC MOVEMENT VARIABLES
 export (int) var directionH = 1
@@ -42,6 +47,7 @@ func _ready():
 	set_process(true)
 	set_fixed_process(true)
 	set_process_input(true)
+	audioPlayer = get_parent().get_node("SamplePlayer")
 	
 	speedH = enemyLibrary[enemyType][0]
 	speedV = enemyLibrary[enemyType][1]
@@ -60,14 +66,15 @@ func _fixed_process(delta):
 	
 #PUT DEFAULT ACTION/MOVEMENT CODE HERE
 func action(delta):
+	
 	#print("default")
-	var velocity = Vector2()
+	
 	pass
 	
 #PUT OVERRIDING ACTION/MOVEMENT CODE HERE - CURRENTLY USED IN ENEMY 5
 func action1(delta): #tracking enemy
 	#print("act1")
-	var speed = 100
+	var speed = 65
 	var track = Vector2()
 	var body = get_node("aggroArea").get_overlapping_bodies()
 	
@@ -132,6 +139,7 @@ func decrease_Health(amount):
 		var medkit = medkit_scene.instance()
 		medkit.set_pos(position_medkit)
 		get_tree().get_root().add_child(medkit)
+		audioPlayer.play("Laser3")
 		queue_free()
 	#Limits enemys health so it doesn't go above its maxHealth
 	if (currentHealth > maxHealth):
@@ -144,15 +152,7 @@ func _on_Area2D_body_exit( body ):
 	if (groups.has("cage")):
 		directionH = -directionH
 		directionV = -directionV
-	
-	#func _on_Area2D_body_enter(body):
-    #print(str('Body entered: ', body.get_name()))
-	
-	#func _on_Area2D_body_enter(body):
-    #if body.is_in_group("player"):
-     #print(str('Player has entered')
-	
-	
+		
 func _on_playerDamage_body_enter( body ):
 	print(body.get_name())
 	var groups = body.get_groups()

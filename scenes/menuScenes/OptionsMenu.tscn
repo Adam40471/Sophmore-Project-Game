@@ -23,6 +23,7 @@ alignment = 0
 
 [node name="Controls" type="Button" parent="OptionsMenu"]
 
+visibility/blend_mode = 4
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -32,10 +33,10 @@ margin/top = 0.0
 margin/right = 744.0
 margin/bottom = 196.0
 custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color_disabled = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0, 0.484375, 1, 1 )
-custom_colors/font_color_hover = Color( 0, 0.484375, 1, 1 )
-custom_colors/font_color_pressed = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -44,6 +45,7 @@ flat = true
 
 [node name="SoundEfx" type="Button" parent="OptionsMenu"]
 
+visibility/blend_mode = 4
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -53,10 +55,10 @@ margin/top = 200.0
 margin/right = 744.0
 margin/bottom = 396.0
 custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color_disabled = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0, 0.484375, 1, 1 )
-custom_colors/font_color_hover = Color( 0, 0.484375, 1, 1 )
-custom_colors/font_color_pressed = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -65,6 +67,7 @@ flat = true
 
 [node name="Back" type="Button" parent="OptionsMenu"]
 
+visibility/blend_mode = 4
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -74,10 +77,10 @@ margin/top = 400.0
 margin/right = 744.0
 margin/bottom = 597.0
 custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color_disabled = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0, 0.484375, 1, 1 )
-custom_colors/font_color_hover = Color( 0, 0.484375, 1, 1 )
-custom_colors/font_color_pressed = Color( 0, 0.484375, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null

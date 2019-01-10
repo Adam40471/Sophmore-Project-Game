@@ -1,6 +1,6 @@
 #Adam Hamed
 #Health Bar code
-#OCTOBER 1th, 2017
+#OCTOBER 19th, 2017
 
 extends CanvasLayer
 
@@ -74,7 +74,9 @@ func modify_health(amount):
 	
 	#Will kill the player if their health is 0
 	if (health <= 0):
-		get_tree().quit()
+		#Trigger player objects player_death() function
+		#print for testing purposes
+		print("you died")
 		
 	#Manages the appearance of Extra Health Crystal icons
 	if(maxHealth / 100 >= 1):

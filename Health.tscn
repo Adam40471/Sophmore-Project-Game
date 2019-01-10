@@ -83,76 +83,68 @@ hframes = 2
 region = true
 region_rect = Rect2( 20, 1, 68, 6 )
 
-[node name="Extra Health 1" type="Sprite" parent="Control"]
+[node name="Extra Health1" type="Sprite" parent="Control"]
 
-transform/pos = Vector2( -5, -15 )
+transform/pos = Vector2( -6, -16 )
 texture = ExtResource( 2 )
 vframes = 20
 hframes = 20
-region = true
 region_rect = Rect2( 1, 1, 7, 7 )
 
-[node name="Extra Health 2" type="Sprite" parent="Control"]
+[node name="Extra Health2" type="Sprite" parent="Control"]
 
-transform/pos = Vector2( 3, -15 )
+transform/pos = Vector2( 2, -16 )
 texture = ExtResource( 2 )
 vframes = 20
 hframes = 20
-region = true
 region_rect = Rect2( 1, 1, 7, 7 )
 
-[node name="Extra Health 3" type="Sprite" parent="Control"]
+[node name="Extra Health3" type="Sprite" parent="Control"]
 
-transform/pos = Vector2( 11, -15 )
+transform/pos = Vector2( 10, -16 )
 texture = ExtResource( 2 )
 vframes = 20
 hframes = 20
-region = true
 region_rect = Rect2( 1, 1, 7, 7 )
 
-[node name="Extra Health 4" type="Sprite" parent="Control"]
+[node name="Extra Health4" type="Sprite" parent="Control"]
 
-transform/pos = Vector2( 19, -15 )
+transform/pos = Vector2( 18, -16 )
 texture = ExtResource( 2 )
 vframes = 20
 hframes = 20
-region = true
 region_rect = Rect2( 1, 1, 7, 7 )
 
-[node name="Extra Health 5" type="Sprite" parent="Control"]
+[node name="Extra Health5" type="Sprite" parent="Control"]
 
-transform/pos = Vector2( 27, -15 )
+transform/pos = Vector2( 26, -16 )
 texture = ExtResource( 2 )
 vframes = 20
 hframes = 20
-region = true
 region_rect = Rect2( 1, 1, 7, 7 )
 
-[node name="Extra Health 6" type="Sprite" parent="Control"]
+[node name="Extra Health6" type="Sprite" parent="Control"]
 
-transform/pos = Vector2( 35, -15 )
+transform/pos = Vector2( 34, -16 )
 texture = ExtResource( 2 )
 vframes = 20
 hframes = 20
-region = true
 region_rect = Rect2( 1, 1, 7, 7 )
 
 [node name="Extra Health7" type="Sprite" parent="Control"]
 
-transform/pos = Vector2( 43, -15 )
+transform/pos = Vector2( 42, -16 )
 texture = ExtResource( 2 )
 vframes = 20
 hframes = 20
-region = true
 region_rect = Rect2( 1, 1, 7, 7 )
 
 [node name="Extra Health8" type="Sprite" parent="Control"]
 
-transform/pos = Vector2( 51, -15 )
+transform/pos = Vector2( 50, -16 )
 texture = ExtResource( 2 )
 vframes = 20
 hframes = 20
-region = true
 region_rect = Rect2( 1, 1, 7, 7 )
 
 

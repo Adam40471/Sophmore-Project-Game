@@ -1,8 +1,6 @@
 #Adam Hamed
 #Health Bar code
-#OCTOBER 9th, 2017
-
-#UPDATED by Adam OCTOBER 17th, 2017 - Final Working Version
+#Updated Oct 19th, 2017
 
 extends CanvasLayer
 
@@ -18,7 +16,7 @@ func _ready():
 	set_process_input(true)
 	
 	#Initializes the health bar
-	get_node("Control/Health Bar").set_value(health % 100)
+	get_node("Control/ProgressBar").set_value(health % 100)
 	
 	#Extra Health Crystals begin hidden since you dont start with extra health (frame 255 is empty)
 	get_node("Control/Extra Health1").set_frame(255)
@@ -36,12 +34,15 @@ func _input(event):
 	#Damages the player - implement in enemy script by doing 
 	#get_node("Player/Health Canvas/Control/ProgressBar").modify_health(negative integer)
 	if event.is_action_pressed("Damager"):
-		modify_health(-5)
-	#Heals the player (implement Medkit item)
+		#press 1
+		modify_health(-10)
+	#Heals the player
 	if event.is_action_pressed("HPIncrease"):
-		modify_health(5)
-	#Gives an Extra Health Crystal (implement MaxHPIncrease item)
+		#press 2
+		modify_health(10)
+	#Gives an Extra Health Crystal
 	if event.is_action_pressed("HealthTank"):
+		#press 3
 		HealthTank()
 
 #Unlocks Extra Health Crystals
@@ -52,7 +53,7 @@ func HealthTank():
 		#Upon unlocking an Extra Health Crystal you get the full 100 extra hitpoints
 		modify_health(100)
 	#print statement for testing purposes
-	print(maxHealth)
+	#print(maxHealth)
 		
 #Returns the current health, so it can be used outside this script
 func get_health():
@@ -72,7 +73,7 @@ func modify_health(amount):
 	if (health > maxHealth):
 		health = maxHealth
 	#Refreshes the health bar
-	get_node("Control/Health Bar").set_value(health  % 100)
+	get_node("Control/ProgressBar").set_value(health  % 100)
 	
 	#Will kill the player if their health is 0
 	if (health <= 0):
@@ -90,5 +91,4 @@ func modify_health(amount):
 			else:
 				get_node(ExtraHealthAccess[i-1]).set_frame(1)
 	
-
 func _fixed_process(delta):

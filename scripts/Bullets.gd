@@ -13,7 +13,7 @@ func _fixed_process(delta):
 #		print("hi")
 
 func _on_Bullets_area_enter(area):
-	print("hi")
+	#print("hi")
 	area.queue_free()
 	self.queue_free()
 		
@@ -26,8 +26,6 @@ func _hit_something():
 
 #func _shoot(aim, direction):
 	
-	
-
 func _on_Bullets_body_enter( body ):
-	print("hello")
+	#print("hello")
 	self.queue_free()

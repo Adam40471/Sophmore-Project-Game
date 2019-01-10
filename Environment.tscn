@@ -2,18 +2,18 @@
 
 [ext_resource path="res://396239_romariogrande_alien-dream.ogg" type="AudioStream" id=1]
 [ext_resource path="res://tilesets/map.scn" type="PackedScene" id=2]
-[ext_resource path="res://scripts/spikeTrap.gd" type="Script" id=3]
+[ext_resource path="res://scripts/trapScripts/spikeTrap.gd" type="Script" id=3]
 [ext_resource path="res://sprites/spikeTrap.png" type="Texture" id=4]
-[ext_resource path="res://scripts/Medkit.gd" type="Script" id=5]
+[ext_resource path="res://scripts/collectableScripts/Medkit.gd" type="Script" id=5]
 [ext_resource path="res://Healthbar/HealthObjects/Medkit.png" type="Texture" id=6]
-[ext_resource path="res://scripts/HP Increase.gd" type="Script" id=7]
+[ext_resource path="res://scripts/collectableScripts/HP Increase.gd" type="Script" id=7]
 [ext_resource path="res://Healthbar/HealthObjects/MaxHPIncrease.png" type="Texture" id=8]
-[ext_resource path="res://scripts/Player.gd" type="Script" id=9]
+[ext_resource path="res://scripts/playerScripts/Player.gd" type="Script" id=9]
 [ext_resource path="res://sprites/PlayerSheet.png" type="Texture" id=10]
-[ext_resource path="res://scripts/PlayerAnimation.gd" type="Script" id=11]
-[ext_resource path="res://health.gd" type="Script" id=12]
+[ext_resource path="res://scripts/playerScripts/PlayerAnimation.gd" type="Script" id=11]
+[ext_resource path="res://scripts/playerScripts/health.gd" type="Script" id=12]
 [ext_resource path="res://tilesets/SpriteSheet.atex" type="Texture" id=13]
-[ext_resource path="res://Enemy.gd" type="Script" id=14]
+[ext_resource path="res://scripts/enemyScripts/Enemy.gd" type="Script" id=14]
 [ext_resource path="res://Player/Graphics/icon.png" type="Texture" id=15]
 [ext_resource path="res://pause_popup.tscn" type="PackedScene" id=16]
 
@@ -235,8 +235,8 @@ __meta__ = {
 }
 
 [node name="Player" type="KinematicBody2D" parent="." groups=[
-"collectable",
 "player",
+"collectable",
 ]]
 
 process/pause_mode = 1

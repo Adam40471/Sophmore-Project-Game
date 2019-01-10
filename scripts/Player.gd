@@ -1,67 +1,68 @@
-extends KinematicBody2D
-
-var initial_direction = 0
-var direction = 0
-var speed = 0
-var MAX_SPEED = 600
-var ACCELERATE = 100
-var DECELERATE = 250
-var velocity = 0;
-
-
-var velocityY = 0;
-
- 
-#INITIALIZE PROGRAM
- 
-func _ready():
-    set_process(true)  
-    set_fixed_process(true)
-    pass
-   
-#STEP FUNCTION 
-func _process(delta):
-   
-    #MOVEMENT INPUTS       
-    if Input.is_action_pressed("ui_up"):
-        velocityY =-100*delta
-    if Input.is_action_pressed("ui_down"):
-        velocityY = 100*delta
-
-    if Input.is_action_pressed("ui_left"):
-        initial_direction = -1     
-    elif Input.is_action_pressed("ui_right"):
-        initial_direction = 1      
-    else:
-        initial_direction = 0
-       
-    if initial_direction:
-        direction = initial_direction
-       
-    #MOVEMENT CALCULATIONS
-  
-    if initial_direction == -direction:
-        speed /=3  
-       
-    if initial_direction:
-        speed += ACCELERATE * delta    
-    else:
-        speed -= DECELERATE * delta
-   
-    #ensures speed does not freak out
-    speed = clamp(speed, 0, MAX_SPEED)
-    
-    #velocity calculation      
-    velocity = speed * delta * initial_direction
-    move(Vector2(velocity, velocityY))
-    pass
-   
-    #END CODE
-	
-	
-	
 #RJ Compton
 #INITIAL MOVEMENT CODE
 #OCTOBER 1, 2017
 
+#UPDATED OCTOBER 7, 2017
+#UPDATED OCTOBER 9, 2017
+
+extends KinematicBody2D
+
+#DIRECTIONS
+var input_direction = 0
+var direction = 0
+
+#SPEEDS
+var speed_x = 0
+var speed_y = 0
+var velocity = Vector2()
+
+#CONSTANTS
+const MAX_SPEED = 1200
+const DECELERATION = 500
+const ACCELERATION = 400
+const GRAVITY = 2200
+const JUMP_FORCE = 1000
+
+
+#ALLOWS PROGRAM TO RUN
+func _ready():
+	set_process(true)
+	set_process_input(true)
+
+#SPECIAL INPUT (JUMP)	
+func _input(event):
+	if event.is_action_pressed("jump"):
+		speed_y = -JUMP_FORCE
+	pass
 	
+#RUNS EVERY FRAME	
+func _process(delta):
+	
+#KEYBOARD INPUTS
+
+	if input_direction:
+		direction = input_direction
+	
+	if Input.is_action_pressed("ui_left"):
+		input_direction = -1
+	elif Input.is_action_pressed("ui_right"):
+		input_direction = 1
+	else:
+		input_direction = 0
+			
+#MOVEMENT CALCULATIONS
+
+	if input_direction == - direction:
+		speed_x /= 3
+	if input_direction:
+		speed_x += ACCELERATION * delta
+	else:
+		speed_x -= DECELERATION * delta
+		
+	speed_x = clamp(speed_x, 0, MAX_SPEED)
+	speed_y += GRAVITY * delta
+	
+	velocity.x = speed_x * delta * direction
+	velocity.y = speed_y * delta
+	
+	move(velocity)

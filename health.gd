@@ -4,40 +4,46 @@
 
 extends CanvasLayer
 
+var ExtraHealthList = ["Control/Extra Health1", "Control/Extra Health2", "Control/Extra Health3", "Control/Extra Health4", "Control/Extra Health5", "Control/Extra Health6", "Control/Extra Health7", "Control/Extra Health8"]
+var ExtraHealthAccess = StringArray(ExtraHealthList)
+
 var isAlive = true
-#Change this healthLevel value to test HP crystal mechanics functionality
-var healthLevel = 1
+var healthLevel = 9
 var health = 100
 
 func _ready():
 	set_fixed_process(true)
 	set_process_input(true)
-	#They begin hidden because you don't begin with extra Health Levels
+	
+	#They begin hidden since you dont start with extra health
+	#Currently commented out for testing purposes
+	#get_node("Control/Extra Health1").set_frame(255)
+	#get_node("Control/Extra Health2").set_frame(255)
+	#get_node("Control/Extra Health3").set_frame(255)
+	#get_node("Control/Extra Health4").set_frame(255)
+	#get_node("Control/Extra Health5").set_frame(255)
+	#get_node("Control/Extra Health6").set_frame(255)
+	#get_node("Control/Extra Health7").set_frame(255)
+	#get_node("Control/Extra Health8").set_frame(255)
 	pass
 
+#Decrements health for testing purposes
 func _input(event):
-	#Decrements health for testing
 	if event.is_action_pressed("ui_accept"):
-		health = health - 10
+		health = health - 50
 
 func _fixed_process(delta):
 	get_node("Control/ProgressBar").set_value(health)
 	
-	#If there is no health left in the final level of health, you die
-	#currently need to make something where isAlive being false kills the player
-	
-	#This drops your health level down by 1 if you reach 0/100 health in your current lvl
-	#Need to make the crystal icons work with this, but the functionality is there.
-		
+	#This drops your health level down by 1 if you reach 0/100 health in your current level	
 	if(health == 0):
 		healthLevel = healthLevel - 1
-		
-		#This is important. It refills the main health bar after dropping down a health level
-		#However, it does not refill it when you should be dead.
+		#Refills health bar after dropping down a Health Level, provided youre still alive
 		if(healthLevel >= 1):
 			health = 100
-			
-		
-		
-	#health regeneration over time (for testing)
-	#health += delta * 2
+		else:
+			isAlive = false
+		#Takes away a Extra Health Crystal icon when health bar is emptied
+		if(healthLevel >= 1):
+			for i in range(1, 10):
+				get_node(ExtraHealthAccess[healthLevel-1]).set_frame(1)

@@ -85,7 +85,7 @@ region_rect = Rect2( 20, 1, 68, 6 )
 
 [node name="Extra Health1" type="Sprite" parent="Control"]
 
-transform/pos = Vector2( -6, -16 )
+transform/pos = Vector2( 2, -16 )
 texture = ExtResource( 2 )
 vframes = 20
 hframes = 20
@@ -93,7 +93,7 @@ region_rect = Rect2( 1, 1, 7, 7 )
 
 [node name="Extra Health2" type="Sprite" parent="Control"]
 
-transform/pos = Vector2( 2, -16 )
+transform/pos = Vector2( -6, -16 )
 texture = ExtResource( 2 )
 vframes = 20
 hframes = 20

@@ -46,6 +46,7 @@ editor/display_folded = true
 [node name="Player" type="KinematicBody2D" parent="."]
 
 process/pause_mode = 1
+editor/display_folded = true
 transform/pos = Vector2( 100, -13.5 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -80,15 +81,36 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Health Canvas" type="CanvasLayer" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
+transform/pos = Vector2( 70, 103 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+[node name="Health Canvas" type="CanvasLayer" parent="."]
+
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
-scale = Vector2( 2, 2 )
+scale = Vector2( 2.1, 2.1 )
 script/script = ExtResource( 4 )
 
-[node name="Control" type="Control" parent="Player/Health Canvas"]
+[node name="Control" type="Control" parent="Health Canvas"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -103,7 +125,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="Player/Health Canvas/Control"]
+[node name="ProgressBar" type="ProgressBar" parent="Health Canvas/Control"]
 
 rect/scale = Vector2( 0.25, 0.25 )
 focus/ignore_mouse = false
@@ -129,7 +151,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="HealthOverlay" type="Sprite" parent="Player/Health Canvas/Control"]
+[node name="HealthOverlay" type="Sprite" parent="Health Canvas/Control"]
 
 transform/pos = Vector2( -13, -11.0078 )
 texture = ExtResource( 5 )
@@ -143,25 +165,93 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Extra Health1" type="Sprite" parent="Health Canvas/Control"]
 
-transform/pos = Vector2( 70, 103 )
-anchor_mode = 1
-rotating = false
-current = true
-zoom = Vector2( 0.5, 0.5 )
-limit/left = -10000000
-limit/top = -10000000
-limit/right = 10000000
-limit/bottom = 10000000
-drag_margin/h_enabled = true
-drag_margin/v_enabled = true
-smoothing/enable = false
-smoothing/speed = 5.0
-drag_margin/left = 0.2
-drag_margin/top = 0.2
-drag_margin/right = 0.2
-drag_margin/bottom = 0.2
+transform/pos = Vector2( -6, -16 )
+texture = ExtResource( 5 )
+vframes = 20
+hframes = 20
+region_rect = Rect2( 1, 1, 7, 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Extra Health2" type="Sprite" parent="Health Canvas/Control"]
+
+transform/pos = Vector2( 2, -16 )
+texture = ExtResource( 5 )
+vframes = 20
+hframes = 20
+region_rect = Rect2( 1, 1, 7, 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Extra Health3" type="Sprite" parent="Health Canvas/Control"]
+
+transform/pos = Vector2( 10, -16 )
+texture = ExtResource( 5 )
+vframes = 20
+hframes = 20
+region_rect = Rect2( 1, 1, 7, 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Extra Health4" type="Sprite" parent="Health Canvas/Control"]
+
+transform/pos = Vector2( 18, -16 )
+texture = ExtResource( 5 )
+vframes = 20
+hframes = 20
+region_rect = Rect2( 1, 1, 7, 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Extra Health8" type="Sprite" parent="Health Canvas/Control"]
+
+transform/pos = Vector2( 50, -16 )
+texture = ExtResource( 5 )
+vframes = 20
+hframes = 20
+region_rect = Rect2( 1, 1, 7, 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Extra Health7" type="Sprite" parent="Health Canvas/Control"]
+
+transform/pos = Vector2( 42, -16 )
+texture = ExtResource( 5 )
+vframes = 20
+hframes = 20
+region_rect = Rect2( 1, 1, 7, 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Extra Health6" type="Sprite" parent="Health Canvas/Control"]
+
+transform/pos = Vector2( 34, -16 )
+texture = ExtResource( 5 )
+vframes = 20
+hframes = 20
+region_rect = Rect2( 1, 1, 7, 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Extra Health5" type="Sprite" parent="Health Canvas/Control"]
+
+transform/pos = Vector2( 26, -16 )
+texture = ExtResource( 5 )
+vframes = 20
+hframes = 20
+region_rect = Rect2( 1, 1, 7, 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 
 [editable path="map"]

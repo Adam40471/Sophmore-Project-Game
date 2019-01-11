@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=1]
+[gd_scene load_steps=32 format=1]
 
 [ext_resource path="res://Jump.wav" type="Sample" id=1]
 [ext_resource path="res://Laser.wav" type="Sample" id=2]
@@ -18,11 +18,13 @@
 [ext_resource path="res://scripts/playerScripts/health.gd" type="Script" id=16]
 [ext_resource path="res://tilesets/SpriteSheet.atex" type="Texture" id=17]
 [ext_resource path="res://scenes/menuScenes/pause_popup.tscn" type="PackedScene" id=18]
-[ext_resource path="res://scenes/enemyScenes/CircularFlyer.tscn" type="PackedScene" id=19]
-[ext_resource path="res://scenes/enemyScenes/FastSmallTracker.tscn" type="PackedScene" id=20]
-[ext_resource path="res://scenes/enemyScenes/HorizontalSlider.tscn" type="PackedScene" id=21]
-[ext_resource path="res://scenes/enemyScenes/LargeSlowTracker.tscn" type="PackedScene" id=22]
-[ext_resource path="res://scenes/enemyScenes/ShootinTrap.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenes/enemyScenes/DoorLock.gd" type="Script" id=19]
+[ext_resource path="res://black.tex" type="Texture" id=20]
+[ext_resource path="res://scenes/enemyScenes/SpawnScenes/CircularSpawn.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/enemyScenes/SpawnScenes/SmallTrackerSpawn.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/enemyScenes/SpawnScenes/HorizontalSliderSpawn.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenes/enemyScenes/SpawnScenes/LargeTrackerSpawn.tscn" type="PackedScene" id=24]
+[ext_resource path="res://scenes/enemyScenes/ShootinTrap.tscn" type="PackedScene" id=25]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -92,6 +94,11 @@ dark_color = Color( 0.8, 0.8, 0.8, 1 )
 border_size = 0
 border_blend = true
 draw_bg = true
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -31.6326, 27.1445, -31.6326, -24.998, 32.6169, -24.998, 32.6169, 27.1445 )
 
 [node name="root" type="Node2D"]
 
@@ -231,13 +238,13 @@ trigger = false
 _update_shape_index = 6
 
 [node name="Player" type="KinematicBody2D" parent="." groups=[
-"collectable",
 "player",
+"collectable",
 ]]
 
 process/pause_mode = 1
 editor/display_folded = true
-transform/pos = Vector2( 11216.3, 1577.59 )
+transform/pos = Vector2( 11145, 1588 )
 input/pickable = false
 shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 0.95243, 0, 0, 1.32772, 0, 0 )
@@ -462,29 +469,84 @@ __meta__ = {
 editor/display_folded = true
 visibility/visible = false
 
-[node name="CircularFlyer" parent="." instance=ExtResource( 19 )]
+[node name="DoorLock" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 1847.58, 1143.6 )
+transform/scale = Vector2( 0.824403, 0.252691 )
+input/pickable = true
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 0.963931, 0, 0, 1, 0.177739, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 19 )
+
+[node name="Door" type="RigidBody2D" parent="DoorLock"]
+
+transform/pos = Vector2( 0.833075, 225.893 )
+transform/scale = Vector2( 0.825834, 3.9769 )
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = -1.0
+damp_override/angular = -1.0
+
+[node name="Sprite" type="Sprite" parent="DoorLock/Door"]
+
+transform/pos = Vector2( 1.24204, -0.647961 )
+transform/scale = Vector2( 0.235223, 0.425316 )
+texture = ExtResource( 20 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DoorLock"]
+
+transform/pos = Vector2( 0.177739, 0 )
+transform/scale = Vector2( 0.963931, 1 )
+build_mode = 0
+polygon = Vector2Array( -31.6326, 27.1445, -31.6326, -24.998, 32.6169, -24.998, 32.6169, 27.1445 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="CircularSpawn" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 286.981, 313.573 )
 
-[node name="FastSmallTracker" parent="." instance=ExtResource( 20 )]
+[node name="SmallTrackerSpawn" parent="." instance=ExtResource( 22 )]
 
 transform/pos = Vector2( 527.424, 1081.44 )
 
-[node name="HorizontalSlider" parent="." instance=ExtResource( 21 )]
+[node name="HorizontalSliderSpawn" parent="." instance=ExtResource( 23 )]
 
-transform/pos = Vector2( 1312.7, 1466.34 )
+transform/pos = Vector2( 1311.98, 1465.85 )
 
-[node name="LargeSlowTracker" parent="." instance=ExtResource( 22 )]
+[node name="LargeTrackerSpawn" parent="." instance=ExtResource( 24 )]
 
 transform/pos = Vector2( 1657.96, 1402.42 )
 
-[node name="ShootinTrap" parent="." instance=ExtResource( 23 )]
+[node name="ShootinTrap" parent="." instance=ExtResource( 25 )]
 
-transform/pos = Vector2( 11768, 1820 )
-transform/rot = -47.1
-transform/scale = Vector2( 1, 0.75 )
+transform/pos = Vector2( 11767, 1819 )
+transform/rot = -46.0
+transform/scale = Vector2( 1, 0.756 )
 
 [connection signal="body_enter" from="SpikeTrap" to="SpikeTrap" method="_on_SpikeTrap_body_enter"]
+
+[connection signal="area_enter" from="DoorLock" to="DoorLock" method="_on_DoorLock_area_enter"]
 
 
 [editable path="pause_popup"]

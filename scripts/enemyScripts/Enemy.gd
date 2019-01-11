@@ -48,8 +48,8 @@ func _ready():
 	set_process(true)
 	set_fixed_process(true)
 	set_process_input(true)
-	audioPlayer = get_parent().get_node("SamplePlayer")
-	
+	if enemyType == 7:
+		print(self.get_parent())
 	speedH = enemyLibrary[enemyType][0]
 	speedV = enemyLibrary[enemyType][1]
 	acceleration = enemyLibrary[enemyType][2]
@@ -140,8 +140,8 @@ func decrease_Health(amount):
 		var medkit = medkit_scene.instance()
 		medkit.set_pos(position_medkit)
 		get_tree().get_root().add_child(medkit)
-		#get_node(instancePath).alive = false
-		audioPlayer.play("Laser3")
+		get_node(instancePath).alive = false
+		#audioPlayer.play("Laser3")
 		queue_free()
 	#Limits enemys health so it doesn't go above its maxHealth
 	if (currentHealth > maxHealth):
@@ -168,3 +168,9 @@ func _on_playerDamage_body_enter( body ):
 
 func _on_playerDamage_area_enter( area ):
 	pass
+
+
+func _on_Despawn_exit_viewport( viewport ):
+	if get_node(instancePath) != null:
+		get_node(instancePath).alive = false
+		queue_free()

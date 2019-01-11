@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=1]
+[gd_scene load_steps=35 format=1]
 
 [ext_resource path="res://Jump.wav" type="Sample" id=1]
 [ext_resource path="res://Laser.wav" type="Sample" id=2]
@@ -17,20 +17,16 @@
 [ext_resource path="res://scripts/playerScripts/PlayerAnimation.gd" type="Script" id=15]
 [ext_resource path="res://scripts/playerScripts/health.gd" type="Script" id=16]
 [ext_resource path="res://tilesets/SpriteSheet.atex" type="Texture" id=17]
-[ext_resource path="res://scenes/menuScenes/pause_popup.tscn" type="PackedScene" id=18]
-[ext_resource path="res://scenes/enemyScenes/DoorLock.gd" type="Script" id=19]
-[ext_resource path="res://black.tex" type="Texture" id=20]
-[ext_resource path="res://scenes/enemyScenes/SpawnScenes/CircularSpawn.tscn" type="PackedScene" id=21]
-[ext_resource path="res://scenes/enemyScenes/SpawnScenes/SmallTrackerSpawn.tscn" type="PackedScene" id=22]
-[ext_resource path="res://scenes/enemyScenes/SpawnScenes/HorizontalSliderSpawn.tscn" type="PackedScene" id=23]
-[ext_resource path="res://scenes/enemyScenes/SpawnScenes/LargeTrackerSpawn.tscn" type="PackedScene" id=24]
-[ext_resource path="res://scenes/enemyScenes/ShootinTrap.tscn" type="PackedScene" id=25]
-[ext_resource path="res://scenes/enemyScenes/FastSmallTracker.tscn" type="PackedScene" id=26]
-[ext_resource path="res://scenes/enemyScenes/HorizontalSlider.tscn" type="PackedScene" id=27]
-[ext_resource path="res://scenes/enemyScenes/LargeSlowTracker.tscn" type="PackedScene" id=28]
-[ext_resource path="res://scenes/enemyScenes/CircularFlyer.tscn" type="PackedScene" id=29]
-[ext_resource path="res://sprites/SpriteSheet.tex" type="Texture" id=30]
-[ext_resource path="res://scripts/collectableScripts/HP Increase.gd" type="Script" id=31]
+[ext_resource path="res://scenes/enemyScenes/DoorLock.gd" type="Script" id=18]
+[ext_resource path="res://black.tex" type="Texture" id=19]
+[ext_resource path="res://scenes/enemyScenes/SpawnScenes/CircularSpawn.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/enemyScenes/SpawnScenes/SmallTrackerSpawn.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/enemyScenes/SpawnScenes/HorizontalSliderSpawn.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/enemyScenes/SpawnScenes/LargeTrackerSpawn.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenes/enemyScenes/ShootinTrap.tscn" type="PackedScene" id=24]
+[ext_resource path="res://scripts/collectableScripts/HP Increase.gd" type="Script" id=25]
+[ext_resource path="res://sprites/SpriteSheet.tex" type="Texture" id=26]
+[ext_resource path="res://scenes/menuScenes/pause_popup.tscn" type="PackedScene" id=27]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -106,34 +102,10 @@ draw_bg = true
 custom_solver_bias = 0.0
 points = Vector2Array( -31.6326, 27.1445, -31.6326, -24.998, 32.6169, -24.998, 32.6169, 27.1445 )
 
-[sub_resource type="Curve2D" id=7]
-
-bake_interval = 5.0
-_data = {
-"points": Vector2Array( 0, 0, 0, 0, 3.94785, -11.3755, 0, 0, 0, 0, 3.82285, -31.0005 )
-}
-
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 7.8, 10 )
-
-[sub_resource type="Animation" id=9]
-
-resource/name = "medKitAnimation"
-length = 3.0
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:unit_offset")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 3 ),
-"transitions": FloatArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0 ]
-}
 
 [node name="root" type="Node2D"]
 
@@ -273,8 +245,8 @@ trigger = false
 _update_shape_index = 6
 
 [node name="Player" type="KinematicBody2D" parent="." groups=[
-"player",
 "collectable",
+"player",
 ]]
 
 process/pause_mode = 1
@@ -499,11 +471,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="pause_popup" parent="." instance=ExtResource( 18 )]
-
-editor/display_folded = true
-visibility/visible = false
-
 [node name="DoorLock" type="Area2D" parent="."]
 
 editor/display_folded = true
@@ -517,7 +484,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 19 )
+script/script = ExtResource( 18 )
 
 [node name="Door" type="RigidBody2D" parent="DoorLock"]
 
@@ -546,7 +513,7 @@ damp_override/angular = -1.0
 
 transform/pos = Vector2( 1.24204, -0.647961 )
 transform/scale = Vector2( 0.235223, 0.425316 )
-texture = ExtResource( 20 )
+texture = ExtResource( 19 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DoorLock"]
 
@@ -557,432 +524,647 @@ polygon = Vector2Array( -31.6326, 27.1445, -31.6326, -24.998, 32.6169, -24.998, 
 shape_range = Vector2( 0, 0 )
 trigger = false
 
-[node name="CircularSpawn" parent="." instance=ExtResource( 21 )]
+[node name="CircularSpawn" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 286.981, 313.573 )
 
-[node name="SmallTrackerSpawn" parent="." instance=ExtResource( 22 )]
+[node name="SmallTrackerSpawn" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 527.424, 1081.44 )
 
-[node name="HorizontalSliderSpawn" parent="." instance=ExtResource( 23 )]
+[node name="HorizontalSliderSpawn" parent="." instance=ExtResource( 22 )]
 
 transform/pos = Vector2( 1311.98, 1465.85 )
 
-[node name="LargeTrackerSpawn" parent="." instance=ExtResource( 24 )]
+[node name="LargeTrackerSpawn" parent="." instance=ExtResource( 23 )]
 
 transform/pos = Vector2( 1657.96, 1402.42 )
 
-[node name="ShootinTrap" parent="." instance=ExtResource( 25 )]
+[node name="ShootinTrap" parent="." instance=ExtResource( 24 )]
 
 transform/pos = Vector2( 11767, 1819 )
 transform/rot = -46.0
 transform/scale = Vector2( 1, 0.756 )
 
-[node name="ShootinTrap1" parent="." instance=ExtResource( 25 )]
+[node name="ShootinTrap1" parent="." instance=ExtResource( 24 )]
 
 transform/pos = Vector2( 11784.8, 2572.3 )
 transform/rot = -0.0285809
 transform/scale = Vector2( 1, 0.756 )
 
-[node name="ShootinTrap9" parent="." instance=ExtResource( 25 )]
+[node name="ShootinTrap9" parent="." instance=ExtResource( 24 )]
 
 transform/pos = Vector2( 11521, 3933.72 )
 transform/rot = -0.0285809
 transform/scale = Vector2( 1, 0.756 )
 
-[node name="ShootinTrap10" parent="." instance=ExtResource( 25 )]
+[node name="ShootinTrap10" parent="." instance=ExtResource( 24 )]
 
 transform/pos = Vector2( 11872.4, 5357.15 )
 transform/rot = -0.0285809
 transform/scale = Vector2( 1, 0.756 )
 
-[node name="ShootinTrap11" parent="." instance=ExtResource( 25 )]
+[node name="ShootinTrap11" parent="." instance=ExtResource( 24 )]
 
 transform/pos = Vector2( 11091.3, 7081.43 )
 transform/rot = -86.9288
 transform/scale = Vector2( 1, 0.756 )
 
-[node name="ShootinTrap12" parent="." instance=ExtResource( 25 )]
+[node name="ShootinTrap12" parent="." instance=ExtResource( 24 )]
 
 transform/pos = Vector2( 11986.1, 6804.74 )
 transform/rot = -94.1781
 transform/scale = Vector2( 1, 0.756 )
 
-[node name="ShootinTrap2" parent="." instance=ExtResource( 25 )]
+[node name="ShootinTrap2" parent="." instance=ExtResource( 24 )]
 
 transform/pos = Vector2( 8271.62, 2383.84 )
 transform/rot = 89.1357
 transform/scale = Vector2( 1, 0.756 )
 
-[node name="ShootinTrap3" parent="." instance=ExtResource( 25 )]
+[node name="ShootinTrap3" parent="." instance=ExtResource( 24 )]
 
 transform/pos = Vector2( 9484.19, 5624.22 )
 transform/rot = 89.1357
 transform/scale = Vector2( 1, 0.756 )
 
-[node name="ShootinTrap4" parent="." instance=ExtResource( 25 )]
+[node name="ShootinTrap4" parent="." instance=ExtResource( 24 )]
 
 transform/pos = Vector2( 8555.97, 5814.99 )
 transform/rot = 89.1357
 transform/scale = Vector2( 1, 0.756 )
 
-[node name="ShootinTrap5" parent="." instance=ExtResource( 25 )]
+[node name="ShootinTrap5" parent="." instance=ExtResource( 24 )]
 
 transform/pos = Vector2( 7724.77, 5993.7 )
 transform/rot = 89.1357
 transform/scale = Vector2( 1, 0.756 )
 
-[node name="ShootinTrap6" parent="." instance=ExtResource( 25 )]
+[node name="ShootinTrap6" parent="." instance=ExtResource( 24 )]
 
 transform/pos = Vector2( 5149.34, 6101.77 )
 transform/rot = 89.1357
 transform/scale = Vector2( 1, 0.756 )
 
-[node name="ShootinTrap7" parent="." instance=ExtResource( 25 )]
+[node name="ShootinTrap7" parent="." instance=ExtResource( 24 )]
 
 transform/pos = Vector2( 6687.67, 3248.78 )
 transform/rot = 177.759
 transform/scale = Vector2( 1, 0.756 )
 
-[node name="ShootinTrap8" parent="." instance=ExtResource( 25 )]
+[node name="ShootinTrap8" parent="." instance=ExtResource( 24 )]
 
 transform/pos = Vector2( 3966.78, 3439.26 )
 transform/rot = 177.759
 transform/scale = Vector2( 1, 0.756 )
 
-[node name="FastSmallTracker" parent="." instance=ExtResource( 26 )]
+[node name="SmallTrackerSpawn 2 2" parent="." instance=ExtResource( 21 )]
 
-transform/pos = Vector2( 943.689, 617.731 )
-
-[node name="FastSmallTracker 2" parent="." instance=ExtResource( 26 )]
+[node name="SmallTrackerSpawn 7" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 1314.4, 304.483 )
 
-[node name="FastSmallTracker 3" parent="." instance=ExtResource( 26 )]
+[node name="SmallTrackerSpawn 8" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 1778.3, 485.304 )
 
-[node name="FastSmallTracker 4" parent="." instance=ExtResource( 26 )]
+[node name="SmallTrackerSpawn 6" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 1028.44, 272.075 )
 
-[node name="FastSmallTracker 5" parent="." instance=ExtResource( 26 )]
+[node name="SmallTrackerSpawn 5" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 1504.76, 868.587 )
 
-[node name="FastSmallTracker 6" parent="." instance=ExtResource( 26 )]
+[node name="SmallTrackerSpawn 4" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 2117.25, 720.015 )
 
-[node name="FastSmallTracker 7" parent="." instance=ExtResource( 26 )]
+[node name="SmallTrackerSpawn 3" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 2374.04, 863.514 )
 
-[node name="FastSmallTracker 8" parent="." instance=ExtResource( 26 )]
+[node name="SmallTrackerSpawn 2" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 1767.31, 775.401 )
 
-[node name="HorizontalSlider" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 3" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 1819.12, 1034.03 )
+transform/pos = Vector2( 1818.4, 1033.54 )
 
-[node name="HorizontalSlider1" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 4" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 2064.11, 1034.31 )
+transform/pos = Vector2( 2063.39, 1033.82 )
 
-[node name="HorizontalSlider2" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 5" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 2314.84, 1034.31 )
+transform/pos = Vector2( 2314.12, 1033.82 )
 
-[node name="HorizontalSlider3" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 6" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 2261.08, 1225.71 )
+transform/pos = Vector2( 2260.36, 1225.22 )
 
-[node name="HorizontalSlider4" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 7" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 1972.74, 1225.71 )
+transform/pos = Vector2( 1972.02, 1225.22 )
 
-[node name="HorizontalSlider5" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 8" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 2647.47, 458.105 )
+transform/pos = Vector2( 2646.75, 457.616 )
 
-[node name="HorizontalSlider6" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 9" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 2782.19, 458.105 )
+transform/pos = Vector2( 2781.47, 457.616 )
 
-[node name="HorizontalSlider7" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 10" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 2553.47, 553.904 )
+transform/pos = Vector2( 2552.75, 553.415 )
 
-[node name="HorizontalSlider8" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 2" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 2563.65, 793.997 )
+transform/pos = Vector2( 2562.93, 793.508 )
 
-[node name="HorizontalSlider9" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 11" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 2782.05, 793.997 )
+transform/pos = Vector2( 2781.33, 793.508 )
 
-[node name="LargeSlowTracker" parent="." instance=ExtResource( 28 )]
+[node name="LargeTrackerSpawn 2" parent="." instance=ExtResource( 23 )]
 
 transform/pos = Vector2( 469.807, 975.07 )
 
-[node name="LargeSlowTracker1" parent="." instance=ExtResource( 28 )]
+[node name="LargeTrackerSpawn 3" parent="." instance=ExtResource( 23 )]
 
 transform/pos = Vector2( 2964.2, 1309.83 )
 
-[node name="LargeSlowTracker2" parent="." instance=ExtResource( 28 )]
+[node name="LargeTrackerSpawn 4" parent="." instance=ExtResource( 23 )]
 
 transform/pos = Vector2( 7042.73, 1726.09 )
 
-[node name="LargeSlowTracker3" parent="." instance=ExtResource( 28 )]
+[node name="LargeTrackerSpawn 5" parent="." instance=ExtResource( 23 )]
 
 transform/pos = Vector2( 8991.3, 2833.52 )
 
-[node name="LargeSlowTracker5" parent="." instance=ExtResource( 28 )]
+[node name="LargeTrackerSpawn 6" parent="." instance=ExtResource( 23 )]
 
 transform/pos = Vector2( 11404.7, 7473.87 )
 
-[node name="LargeSlowTracker4" parent="." instance=ExtResource( 28 )]
+[node name="LargeTrackerSpawn 7" parent="." instance=ExtResource( 23 )]
 
 transform/pos = Vector2( 3771.93, 4908.94 )
 
-[node name="LargeSlowTracker6" parent="." instance=ExtResource( 28 )]
+[node name="LargeTrackerSpawn 8" parent="." instance=ExtResource( 23 )]
 
 transform/pos = Vector2( 860.436, 5029.06 )
 
-[node name="LargeSlowTracker7" parent="." instance=ExtResource( 28 )]
+[node name="LargeTrackerSpawn 9" parent="." instance=ExtResource( 23 )]
 
 transform/pos = Vector2( 2290.44, 3787.81 )
 
-[node name="CircularFlyer" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 2" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 746.572, 624.649 )
 
-[node name="CircularFlyer1" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 3" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 2228.03, 1344.5 )
 
-[node name="CircularFlyer4" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 4" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 4148.74, 1478.11 )
 
-[node name="CircularFlyer5" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 5" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 4576.31, 1519.87 )
 
-[node name="CircularFlyer6" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 6" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 3667.73, 1359.53 )
 
-[node name="CircularFlyer7" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 7" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 4952.1, 1519.87 )
 
-[node name="CircularFlyer8" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 8" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 5406.39, 1508.18 )
 
-[node name="CircularFlyer9" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 9" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 5693.66, 1533.23 )
 
-[node name="CircularFlyer10" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 10" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 6057.76, 1501.5 )
 
-[node name="CircularFlyer13" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 11" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 10689, 5321.03 )
 
-[node name="CircularFlyer14" parent="." instance=ExtResource( 29 )]
-
-transform/pos = Vector2( 11139.7, 6171.95 )
-
-[node name="CircularFlyer15" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 12" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 11655.8, 6451.4 )
 
-[node name="CircularFlyer16" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 13" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 11620.5, 7032.95 )
 
-[node name="CircularFlyer17" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 14" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 12781, 3572.45 )
 
-[node name="CircularFlyer11" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 15" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 6460.27, 1498.16 )
 transform/rot = -42.7183
 
-[node name="CircularFlyer12" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 16" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 7026.22, 1555.57 )
 transform/rot = -14.7012
 
-[node name="CircularFlyer2" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 17" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 1805.68, 207.577 )
 
-[node name="CircularFlyer3" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 18" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 645.103, 2096.64 )
 
-[node name="HorizontalSlider 2" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 12" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 167.424, 1849.75 )
+transform/pos = Vector2( 166.702, 1849.26 )
 
-[node name="HorizontalSlider10" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 13" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( -53.9597, 1850.63 )
+transform/pos = Vector2( -54.6821, 1850.14 )
 
-[node name="HorizontalSlider11" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 14" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( -326.839, 1850.63 )
+transform/pos = Vector2( -327.561, 1850.14 )
 
-[node name="HorizontalSlider13" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 15" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( -87.4824, 2527.27 )
+transform/pos = Vector2( -88.2048, 2526.78 )
 
-[node name="HorizontalSlider12" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 16" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( -519.068, 1985.45 )
+transform/pos = Vector2( -519.446, 1984.66 )
 transform/rot = -30.224
 
-[node name="HorizontalSlider 3" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 17" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 11387.6, 1642.29 )
+transform/pos = Vector2( 11386.9, 1641.8 )
 
-[node name="HorizontalSlider14" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 18" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 11599.3, 1641.55 )
+transform/pos = Vector2( 11598.6, 1641.06 )
 
-[node name="HorizontalSlider17" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 19" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 12191.7, 2891.14 )
+transform/pos = Vector2( 12191, 2890.65 )
 
-[node name="HorizontalSlider18" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 20" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 12452, 3177.2 )
+transform/pos = Vector2( 12451.3, 3176.71 )
 
-[node name="HorizontalSlider19" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 21" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 12833.8, 3177.2 )
+transform/pos = Vector2( 12833.1, 3176.71 )
 
-[node name="HorizontalSlider16" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 22" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 11761.8, 2021.51 )
+transform/pos = Vector2( 11760.9, 2021.67 )
 transform/rot = 44.4021
 
-[node name="HorizontalSlider15" parent="." instance=ExtResource( 27 )]
+[node name="HorizontalSliderSpawn 23" parent="." instance=ExtResource( 22 )]
 
-transform/pos = Vector2( 11750, 941.893 )
+transform/pos = Vector2( 11749.8, 941.041 )
 transform/rot = -43.427
 
-[node name="FastSmallTracker 9" parent="." instance=ExtResource( 26 )]
+[node name="SmallTrackerSpawn 9" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 11716.7, 1519.35 )
 
-[node name="FastSmallTracker10" parent="." instance=ExtResource( 26 )]
+[node name="SmallTrackerSpawn 10" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 11746.1, 1365.72 )
 
-[node name="FastSmallTracker11" parent="." instance=ExtResource( 26 )]
+[node name="SmallTrackerSpawn 11" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 11845.1, 2082.72 )
 
-[node name="FastSmallTracker12" parent="." instance=ExtResource( 26 )]
+[node name="SmallTrackerSpawn 12" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 11489.4, 2969.04 )
 
-[node name="CircularFlyer 2" parent="." instance=ExtResource( 29 )]
+[node name="CircularSpawn 19" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 11452.3, 1267.03 )
 
-[node name="Max HP Increase Node" type="Node2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 2900, 288.474 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Path2D" type="Path2D" parent="Max HP Increase Node"]
-
-curve = SubResource( 7 )
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Max HP Increase Node/Path2D"]
-
-transform/pos = Vector2( 3.94785, -11.3755 )
-transform/rot = 90.3649
-offset = 0.0
-h_offset = 0.0
-v_offset = 0.0
-rotate = true
-cubic_interp = true
-loop = true
-lookahead = 4.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="HP Increase Sprite" type="Sprite" parent="Max HP Increase Node/Path2D/PathFollow2D"]
-
-transform/pos = Vector2( 4, 4 )
-texture = ExtResource( 30 )
-vframes = 20
-hframes = 20
-frame = 12
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="HealthIncrease" type="Area2D" parent="Max HP Increase Node/Path2D/PathFollow2D/HP Increase Sprite" groups=[
+[node name="HealthIncrease" type="Area2D" parent="." groups=[
 "collectable",
 ]]
 
-transform/pos = Vector2( -4, -4 )
+editor/display_folded = true
+transform/pos = Vector2( 2869, 421 )
 input/pickable = false
-shapes/0/shape = SubResource( 8 )
-shapes/0/transform = Matrix32( 0.535236, 0, 0, 0.425672, 4.03056, 4.52896 )
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 31 )
+script/script = ExtResource( 25 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Max HP Increase Node/Path2D/PathFollow2D/HP Increase Sprite/HealthIncrease"]
+[node name="HP Increase Sprite" type="Sprite" parent="HealthIncrease"]
 
-transform/pos = Vector2( 4.03056, 4.52896 )
-transform/scale = Vector2( 0.535236, 0.425672 )
-shape = SubResource( 8 )
+transform/pos = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+vframes = 20
+hframes = 20
+frame = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthIncrease"]
+
+transform/pos = Vector2( 3.5, 3.5 )
+transform/scale = Vector2( 0.416667, 0.346154 )
+shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 0
+
+[node name="HealthIncrease 2" type="Area2D" parent="." groups=[
+"collectable",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 2886, 404 )
+input/pickable = false
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 25 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Max HP Increase Node/Path2D/PathFollow2D"]
+[node name="HP Increase Sprite" type="Sprite" parent="HealthIncrease 2"]
 
-playback/process_mode = 1
-playback/default_blend_time = 0.0
-root/root = NodePath("..")
-anims/medKitAnimation = SubResource( 9 )
-playback/active = true
-playback/speed = 1.0
-blend_times = [  ]
-autoplay = "medKitAnimation"
+transform/pos = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+vframes = 20
+hframes = 20
+frame = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthIncrease 2"]
+
+transform/pos = Vector2( 3.5, 3.5 )
+transform/scale = Vector2( 0.416667, 0.346154 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+
+[node name="HealthIncrease 3" type="Area2D" parent="." groups=[
+"collectable",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 2901, 391 )
+input/pickable = false
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 25 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HP Increase Sprite" type="Sprite" parent="HealthIncrease 3"]
+
+transform/pos = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+vframes = 20
+hframes = 20
+frame = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthIncrease 3"]
+
+transform/pos = Vector2( 3.5, 3.5 )
+transform/scale = Vector2( 0.416667, 0.346154 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+
+[node name="HealthIncrease 4" type="Area2D" parent="." groups=[
+"collectable",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 2919, 373 )
+input/pickable = false
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 25 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HP Increase Sprite" type="Sprite" parent="HealthIncrease 4"]
+
+transform/pos = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+vframes = 20
+hframes = 20
+frame = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthIncrease 4"]
+
+transform/pos = Vector2( 3.5, 3.5 )
+transform/scale = Vector2( 0.416667, 0.346154 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+
+[node name="HealthIncrease 5" type="Area2D" parent="." groups=[
+"collectable",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 2934, 355 )
+input/pickable = false
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 25 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HP Increase Sprite" type="Sprite" parent="HealthIncrease 5"]
+
+transform/pos = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+vframes = 20
+hframes = 20
+frame = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthIncrease 5"]
+
+transform/pos = Vector2( 3.5, 3.5 )
+transform/scale = Vector2( 0.416667, 0.346154 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+
+[node name="HealthIncrease 6" type="Area2D" parent="." groups=[
+"collectable",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 2852, 437 )
+input/pickable = false
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 25 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HP Increase Sprite" type="Sprite" parent="HealthIncrease 6"]
+
+transform/pos = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+vframes = 20
+hframes = 20
+frame = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthIncrease 6"]
+
+transform/pos = Vector2( 3.5, 3.5 )
+transform/scale = Vector2( 0.416667, 0.346154 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+
+[node name="HealthIncrease 7" type="Area2D" parent="." groups=[
+"collectable",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 2836, 451 )
+input/pickable = false
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 25 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HP Increase Sprite" type="Sprite" parent="HealthIncrease 7"]
+
+transform/pos = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+vframes = 20
+hframes = 20
+frame = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthIncrease 7"]
+
+transform/pos = Vector2( 3.5, 3.5 )
+transform/scale = Vector2( 0.416667, 0.346154 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+
+[node name="HealthIncrease 8" type="Area2D" parent="." groups=[
+"collectable",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 2949, 339 )
+input/pickable = false
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 0.416667, 0, 0, 0.346154, 3.5, 3.5 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 25 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HP Increase Sprite" type="Sprite" parent="HealthIncrease 8"]
+
+transform/pos = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+vframes = 20
+hframes = 20
+frame = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthIncrease 8"]
+
+transform/pos = Vector2( 3.5, 3.5 )
+transform/scale = Vector2( 0.416667, 0.346154 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+
+[node name="pause_popup" parent="." instance=ExtResource( 27 )]
+
+editor/display_folded = true
+visibility/visible = false
 
 [connection signal="body_enter" from="SpikeTrap" to="SpikeTrap" method="_on_SpikeTrap_body_enter"]
 
 [connection signal="area_enter" from="DoorLock" to="DoorLock" method="_on_DoorLock_area_enter"]
 
-[connection signal="body_enter" from="Max HP Increase Node/Path2D/PathFollow2D/HP Increase Sprite/HealthIncrease" to="Max HP Increase Node/Path2D/PathFollow2D/HP Increase Sprite/HealthIncrease" method="_on_Medkit1_body_enter"]
+[connection signal="body_enter" from="HealthIncrease" to="HealthIncrease" method="_on_HealthIncrease_body_enter"]
+
+[connection signal="body_enter" from="HealthIncrease 2" to="HealthIncrease 2" method="_on_HealthIncrease_2_body_enter"]
+
+[connection signal="body_enter" from="HealthIncrease 3" to="HealthIncrease 3" method="_on_HealthIncrease_3_body_enter"]
+
+[connection signal="body_enter" from="HealthIncrease 4" to="HealthIncrease 4" method="_on_HealthIncrease_4_body_enter"]
+
+[connection signal="body_enter" from="HealthIncrease 5" to="HealthIncrease 5" method="_on_HealthIncrease_5_body_enter"]
+
+[connection signal="body_enter" from="HealthIncrease 6" to="HealthIncrease 6" method="_on_HealthIncrease_6_body_enter"]
+
+[connection signal="body_enter" from="HealthIncrease 7" to="HealthIncrease 7" method="_on_HealthIncrease_7_body_enter"]
+
+[connection signal="body_enter" from="HealthIncrease 8" to="HealthIncrease 8" method="_on_HealthIncrease_8_body_enter"]
 
 
 [editable path="pause_popup"]

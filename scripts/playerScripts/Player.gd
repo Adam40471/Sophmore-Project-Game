@@ -68,7 +68,6 @@ func _ready():
 	set_process_input(true)
 	audioPlayer = get_parent().get_node("SamplePlayer")
 	sprite.default("stand", aim, direction, false)
-	#set_low_processor_usage_mode (true)
 
 #SPECIAL INPUT (JUMP)
 func _input(event):
@@ -148,13 +147,14 @@ func inputProccess(delta):
 	#print("Timer: ", jumpTimer, "   canJump:", canJumpNextFrame,  "   Input:",Input.is_action_pressed("jump"))
 	if (jumpTimer <= 0 and canJumpNextFrame and Input.is_action_pressed("jump")):
 		jumpTimer = .20
+		audioPlayer.play("Jump")
 		#print("JumpTimer")
 		
 	#if (Input.is_action_pressed("jump") and jumpTimer > 0 and jumpCounter == 0) :
 	if (Input.is_action_pressed("jump") and jumpTimer > 0) :
 		speed_y = -JUMP_FORCE
 		#jumpCounter += 1
-		audioPlayer.play("Jump")
+		
 	
 	if (jumpTimer > 0):
 		jumpTimer -= (delta)
@@ -252,6 +252,7 @@ func shootingProcess(delta):
 
 func weaponShoot(currentWeapon):
 	if (weapons[currentWeapon][1] > 0):
+		#print('shooting')
 		var position = get_node("../Player").get_pos()
 		var weapon = weapons[currentWeapon][3].instance()
 		weapon.velocity = bulletDirections[aim][0]

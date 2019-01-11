@@ -17,10 +17,8 @@ func setScene(scene):
    #clean up the current scene
    currentScene.queue_free()
    for node in get_tree().get_root().get_children():
-      if (node.has_method("queue_free")):
-          if (currentScene.get_filename() != node.get_filename() && node.get_filename() != "" && node.get_filename() != "res://StreamPlayer.tscn"):
-             print("Scene: " + node.get_filename())
-             node.queue_free()
+      if (currentScene.get_filename() != node.get_filename() && node.get_filename() != "" && node.get_filename() != "res://StreamPlayer.tscn"):
+              node.queue_free()
    #load the file passed in as the param "scene"
    var s = ResourceLoader.load(scene)
    #create an instance of our scene

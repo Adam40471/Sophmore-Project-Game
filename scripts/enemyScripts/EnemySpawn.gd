@@ -20,7 +20,6 @@ func _on_EnemyVisibility_enter_viewport( viewport ):
 	if !alive:
 		var enemy_scene = enemy[enemyNumber].instance()
 		enemy_scene.set_pos(get_node("SpawnPoint").get_global_pos())
-		print(enemy_scene.get_pos())
 		get_tree().get_root().add_child(enemy_scene)
 		alive = true
 		enemy_scene.instancePath = self.get_path()

@@ -37,7 +37,7 @@ func _input(event):
 	#Damages the player - implement in enemy script by doing 
 	#get_node("Player/Health Canvas/Control/ProgressBar").modify_health(negative integer)
 	if event.is_action_pressed("Damager"):
-		modify_health(-5)
+		modify_health(-100)
 	#Heals the player (implement Medkit item)
 	if event.is_action_pressed("HPIncrease"):
 		modify_health(25)
@@ -53,7 +53,7 @@ func HealthTank():
 		#Upon unlocking an Extra Health Crystal you get the full 100 extra hitpoints
 		modify_health(100)
 	#print statement for testing purposes
-	print(maxHealth)
+	#print(maxHealth)
 		
 #Returns the current health, so it can be used outside this script
 func get_health():

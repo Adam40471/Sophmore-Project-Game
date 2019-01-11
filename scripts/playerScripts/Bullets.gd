@@ -18,24 +18,33 @@ func _fixed_process(delta):
 	
 
 func damageable(area):
-	if (area.get_name() != "aggroArea" && area.get_parent().has_method("decrease_Health")):
-		return true
+	if (area.get_name() != "aggroArea"):
+		if (area.get_parent().has_method("decrease_Health")):
+			return 0
+		if (area.get_parent().get_parent().get_parent().has_method("decrease_Health")):
+			return 1
 	else:
-		return false
+		return -1
 
 func _on_Bullets_area_enter(area):
-	if damageable(area):
+	if damageable(area) == 0:
 		area.get_parent().decrease_Health(20)
+		self.queue_free()
+	if damageable(area) == 1:
+		area.get_parent().get_parent().get_parent().decrease_Health(20)
 		self.queue_free()
 	
 func _on_Bullets_body_enter( body ):
 	if (body.has_method("damage")):
-		body.damage(10)
+		body.decrease_Health(1000)
 	self.queue_free()
 
 func _on_Rocket_area_enter( area ):
-	if damageable(area):
+	if damageable(area) == 0:
 		area.get_parent().decrease_Health(40)
+		self.queue_free()
+	if damageable(area) == 1:
+		area.get_parent().get_parent().get_parent().decrease_Health(40)
 		self.queue_free()
 
 func _on_Rocket_body_enter( body ):
@@ -43,8 +52,11 @@ func _on_Rocket_body_enter( body ):
 		self.queue_free()
 
 func _on_Shock_area_enter( area ):
-	if damageable(area):
+	if damageable(area) == 0:
 		area.get_parent().decrease_Health(40)
+		self.queue_free()
+	if damageable(area) == 1:
+		area.get_parent().get_parent().get_parent().decrease_Health(40)
 		self.queue_free()
 
 func _on_Shock_body_enter( body ):
@@ -52,8 +64,11 @@ func _on_Shock_body_enter( body ):
 		self.queue_free()
 
 func _on_Freeze_area_enter( area ):
-	if damageable(area):
+	if damageable(area) == 0:
 		area.get_parent().decrease_Health(40)
+		self.queue_free()
+	if damageable(area) == 1:
+		area.get_parent().get_parent().get_parent().decrease_Health(40)
 		self.queue_free()
 
 func _on_Freeze_body_enter( body ):

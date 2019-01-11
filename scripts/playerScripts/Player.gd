@@ -48,11 +48,11 @@ var speed_y = 0
 var velocity = Vector2()
 
 #CONSTANTS
-const MAX_SPEED = 280
+const MAX_SPEED = 200
 const DECELERATION = 200
 const ACCELERATION = 125
 const GRAVITY = 1000
-const JUMP_FORCE = 250
+const JUMP_FORCE = 150
 const fallSpeed = 250
 var jumpCounter = 0 #CURRENTLY UNUSED
 var maxJumps = 1 #CURRENTLY UNUSED

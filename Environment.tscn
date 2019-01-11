@@ -245,8 +245,8 @@ trigger = false
 _update_shape_index = 6
 
 [node name="Player" type="KinematicBody2D" parent="." groups=[
-"collectable",
 "player",
+"collectable",
 ]]
 
 process/pause_mode = 1

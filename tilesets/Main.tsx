@@ -503,14 +503,14 @@
    <object id="1" x="0" y="0" width="16" height="16"/>
   </objectgroup>
  </tile>
- <tile id="114">
+ <tile id="114" terrain=",,3,">
   <objectgroup draworder="index">
    <object id="2" x="0" y="0">
     <polygon points="0,0 16,16 0,16"/>
    </object>
   </objectgroup>
  </tile>
- <tile id="115">
+ <tile id="115" terrain=",,,3">
   <objectgroup draworder="index">
    <object id="1" x="0" y="16">
     <polygon points="0,0 16,-16 16,0"/>
@@ -585,12 +585,12 @@
    <object id="1" x="0" y="0" width="16" height="16"/>
   </objectgroup>
  </tile>
- <tile id="135">
+ <tile id="135" terrain="3,,3,3">
   <objectgroup draworder="index">
    <object id="1" x="0" y="0" width="16" height="16"/>
   </objectgroup>
  </tile>
- <tile id="136">
+ <tile id="136" terrain=",3,3,3">
   <objectgroup draworder="index">
    <object id="2" x="0" y="0" width="16" height="16"/>
   </objectgroup>
@@ -657,12 +657,12 @@
    <object id="1" x="0" y="0" width="16" height="16"/>
   </objectgroup>
  </tile>
- <tile id="156">
+ <tile id="156" terrain="3,3,3,">
   <objectgroup draworder="index">
    <object id="1" x="0" y="0" width="16" height="16"/>
   </objectgroup>
  </tile>
- <tile id="157">
+ <tile id="157" terrain="3,3,,3">
   <objectgroup draworder="index">
    <object id="2" x="0" y="0" width="16" height="16"/>
   </objectgroup>
@@ -750,14 +750,14 @@
    <object id="1" x="0" y="0" width="16" height="16"/>
   </objectgroup>
  </tile>
- <tile id="177">
+ <tile id="177" terrain="3,,,">
   <objectgroup draworder="index">
    <object id="1" x="0" y="0">
     <polygon points="0,0 0,16 16,0"/>
    </object>
   </objectgroup>
  </tile>
- <tile id="178">
+ <tile id="178" terrain=",3,,">
   <objectgroup draworder="index">
    <object id="1" x="0" y="0">
     <polygon points="0,0 16,16 16,0"/>

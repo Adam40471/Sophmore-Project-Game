@@ -1,25 +1,28 @@
-[gd_scene load_steps=26 format=1]
+[gd_scene load_steps=29 format=1]
 
 [ext_resource path="res://Jump.wav" type="Sample" id=1]
 [ext_resource path="res://Laser.wav" type="Sample" id=2]
 [ext_resource path="res://Laser2.wav" type="Sample" id=3]
 [ext_resource path="res://Laser3.wav" type="Sample" id=4]
 [ext_resource path="res://Run.wav" type="Sample" id=5]
-[ext_resource path="res://Area3.scn" type="PackedScene" id=6]
-[ext_resource path="res://Area2.scn" type="PackedScene" id=7]
-[ext_resource path="res://Area1.scn" type="PackedScene" id=8]
-[ext_resource path="res://scripts/trapScripts/spikeTrap.gd" type="Script" id=9]
-[ext_resource path="res://sprites/Spikes 2.png" type="Texture" id=10]
-[ext_resource path="res://scripts/playerScripts/Player.gd" type="Script" id=11]
-[ext_resource path="res://sprites/PlayerSheet.png" type="Texture" id=12]
-[ext_resource path="res://scripts/playerScripts/PlayerAnimation.gd" type="Script" id=13]
-[ext_resource path="res://scripts/playerScripts/health.gd" type="Script" id=14]
-[ext_resource path="res://tilesets/SpriteSheet.atex" type="Texture" id=15]
-[ext_resource path="res://scenes/menuScenes/pause_popup.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/enemyScenes/CircularFlyer.tscn" type="PackedScene" id=17]
-[ext_resource path="res://scenes/enemyScenes/FastSmallTracker.tscn" type="PackedScene" id=18]
-[ext_resource path="res://scenes/enemyScenes/HorizontalSlider.tscn" type="PackedScene" id=19]
-[ext_resource path="res://scenes/enemyScenes/LargeSlowTracker.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Area5.scn" type="PackedScene" id=6]
+[ext_resource path="res://Area1.scn" type="PackedScene" id=7]
+[ext_resource path="res://Area4.scn" type="PackedScene" id=8]
+[ext_resource path="res://Area3.scn" type="PackedScene" id=9]
+[ext_resource path="res://Area2.scn" type="PackedScene" id=10]
+[ext_resource path="res://scripts/trapScripts/spikeTrap.gd" type="Script" id=11]
+[ext_resource path="res://sprites/Spikes 2.png" type="Texture" id=12]
+[ext_resource path="res://scripts/playerScripts/Player.gd" type="Script" id=13]
+[ext_resource path="res://sprites/PlayerSheet.png" type="Texture" id=14]
+[ext_resource path="res://scripts/playerScripts/PlayerAnimation.gd" type="Script" id=15]
+[ext_resource path="res://scripts/playerScripts/health.gd" type="Script" id=16]
+[ext_resource path="res://tilesets/SpriteSheet.atex" type="Texture" id=17]
+[ext_resource path="res://scenes/menuScenes/pause_popup.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/enemyScenes/CircularFlyer.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/enemyScenes/FastSmallTracker.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/enemyScenes/HorizontalSlider.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/enemyScenes/LargeSlowTracker.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/enemyScenes/ShootinTrap.tscn" type="PackedScene" id=23]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -109,17 +112,25 @@ default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
 
-[node name="Area3" parent="." instance=ExtResource( 6 )]
+[node name="Area5" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -802, 1600 )
+
+[node name="Area1" parent="." instance=ExtResource( 7 )]
+
+editor/display_folded = true
+
+[node name="Area4" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 3200, 2400 )
+
+[node name="Area3" parent="." instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 9600, 2400 )
 
-[node name="Area2" parent="." instance=ExtResource( 7 )]
+[node name="Area2" parent="." instance=ExtResource( 10 )]
 
 transform/pos = Vector2( 3200, -800 )
-
-[node name="Area1" parent="." instance=ExtResource( 8 )]
-
-editor/display_folded = true
 
 [node name="SpikeTrap" type="Area2D" parent="."]
 
@@ -151,14 +162,14 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 9 )
+script/script = ExtResource( 11 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="SpikeTrap"]
 
-texture = ExtResource( 10 )
+texture = ExtResource( 12 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -226,7 +237,7 @@ _update_shape_index = 6
 
 process/pause_mode = 1
 editor/display_folded = true
-transform/pos = Vector2( 48.2941, -22.4117 )
+transform/pos = Vector2( 11216.3, 1577.59 )
 input/pickable = false
 shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 0.95243, 0, 0, 1.32772, 0, 0 )
@@ -234,17 +245,17 @@ shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 11 )
+script/script = ExtResource( 13 )
 
 [node name="Player Sprite" type="Sprite" parent="Player"]
 
 transform/pos = Vector2( -14.8825, -16.8237 )
-texture = ExtResource( 12 )
+texture = ExtResource( 14 )
 centered = false
 vframes = 12
 hframes = 13
 frame = 52
-script/script = ExtResource( 13 )
+script/script = ExtResource( 15 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -287,7 +298,7 @@ layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 2.1, 2.1 )
-script/script = ExtResource( 14 )
+script/script = ExtResource( 16 )
 
 [node name="Weapon" type="Label" parent="Player/Health Canvas"]
 
@@ -347,7 +358,7 @@ __meta__ = {
 [node name="HealthOverlay" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( -13, -11.0078 )
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 centered = false
 vframes = 20
 hframes = 2
@@ -361,7 +372,7 @@ __meta__ = {
 [node name="Extra Health1" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( -6, -16 )
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -372,7 +383,7 @@ __meta__ = {
 [node name="Extra Health2" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 2, -16 )
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -383,7 +394,7 @@ __meta__ = {
 [node name="Extra Health3" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 10, -16 )
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -394,7 +405,7 @@ __meta__ = {
 [node name="Extra Health4" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 18, -16 )
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -405,7 +416,7 @@ __meta__ = {
 [node name="Extra Health8" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 50, -16 )
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -416,7 +427,7 @@ __meta__ = {
 [node name="Extra Health7" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 42, -16 )
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -427,7 +438,7 @@ __meta__ = {
 [node name="Extra Health6" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 34, -16 )
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -438,7 +449,7 @@ __meta__ = {
 [node name="Extra Health5" type="Sprite" parent="Player/Health Canvas/Control"]
 
 transform/pos = Vector2( 26, -16 )
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 vframes = 20
 hframes = 20
 region_rect = Rect2( 1, 1, 7, 7 )
@@ -446,26 +457,32 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="pause_popup" parent="." instance=ExtResource( 16 )]
+[node name="pause_popup" parent="." instance=ExtResource( 18 )]
 
 editor/display_folded = true
 visibility/visible = false
 
-[node name="CircularFlyer" parent="." instance=ExtResource( 17 )]
+[node name="CircularFlyer" parent="." instance=ExtResource( 19 )]
 
 transform/pos = Vector2( 286.981, 313.573 )
 
-[node name="FastSmallTracker" parent="." instance=ExtResource( 18 )]
+[node name="FastSmallTracker" parent="." instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 527.424, 1081.44 )
 
-[node name="HorizontalSlider" parent="." instance=ExtResource( 19 )]
+[node name="HorizontalSlider" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 1312.7, 1466.34 )
 
-[node name="LargeSlowTracker" parent="." instance=ExtResource( 20 )]
+[node name="LargeSlowTracker" parent="." instance=ExtResource( 22 )]
 
 transform/pos = Vector2( 1657.96, 1402.42 )
+
+[node name="ShootinTrap" parent="." instance=ExtResource( 23 )]
+
+transform/pos = Vector2( 11768, 1820 )
+transform/rot = -47.1
+transform/scale = Vector2( 1, 0.75 )
 
 [connection signal="body_enter" from="SpikeTrap" to="SpikeTrap" method="_on_SpikeTrap_body_enter"]
 

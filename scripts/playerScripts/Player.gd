@@ -68,6 +68,7 @@ func _ready():
 	set_process_input(true)
 	audioPlayer = get_parent().get_node("SamplePlayer")
 	sprite.default("stand", aim, direction, false)
+	#set_low_processor_usage_mode (true)
 
 #SPECIAL INPUT (JUMP)
 func _input(event):
@@ -96,7 +97,7 @@ func _input(event):
 				+ ":" + "\t" + str(get_node("../Player").weapons[currentWeapon][1]))
 		else:
 			get_node("../Player/Health Canvas/Weapon").set_text(str(get_node("../Player").weapons[currentWeapon][0]))
-		print(str(currentWeapon))
+		#print(str(currentWeapon))
 		
 	if event.is_action_pressed("Weapon_Shoot"):
 		weaponShoot(currentWeapon)
@@ -216,6 +217,8 @@ func movementProcess(delta):
 					if runSoundTime >= 10.62:
 						runSoundTime = 0
 			else:
+				sprite.stopMoving()
+				#print("stopmovingtest")
 				if(runAudioInt != null): 
 					audioPlayer.stop(runAudioInt)
 					runAudioInt = null
@@ -232,7 +235,7 @@ func shootingProcess(delta):
 	if(shootTime > 0): 
 		shootTime -= delta
 	
-	if Input.is_mouse_button_pressed(BUTTON_LEFT):
+	if Input.is_action_pressed("Main_Fire"):
 		if(shootTime <= 0):
 			shootTime = .25
 			var position = get_node("../Player").get_pos()
@@ -249,7 +252,6 @@ func shootingProcess(delta):
 
 func weaponShoot(currentWeapon):
 	if (weapons[currentWeapon][1] > 0):
-		print('shooting')
 		var position = get_node("../Player").get_pos()
 		var weapon = weapons[currentWeapon][3].instance()
 		weapon.velocity = bulletDirections[aim][0]
@@ -291,5 +293,5 @@ func _process(delta):
 	movementProcess(delta)
 	#SHOOTING
 	shootingProcess(delta)
-	
+	#UPDATING ANIMATION
 	sprite.update(delta)

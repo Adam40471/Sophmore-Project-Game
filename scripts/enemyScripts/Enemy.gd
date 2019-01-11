@@ -97,8 +97,8 @@ func action1(delta): #tracking enemy
 	move(track)
 	
 func action2(delta): #BOSS ONE: Bullet Hell and Teleporting
-	print("boss one works")
-	
+	#print("boss one works")
+	pass
 	#enemyType = 7
 	
 	#var position = get_node("../BossOneRoot").get_pos()	
@@ -140,8 +140,8 @@ func decrease_Health(amount):
 		var medkit = medkit_scene.instance()
 		medkit.set_pos(position_medkit)
 		get_tree().get_root().add_child(medkit)
-		get_node(instancePath).alive = false
-#		audioPlayer.play("Laser3")
+		#get_node(instancePath).alive = false
+		audioPlayer.play("Laser3")
 		queue_free()
 	#Limits enemys health so it doesn't go above its maxHealth
 	if (currentHealth > maxHealth):
@@ -156,10 +156,10 @@ func _on_Area2D_body_exit( body ):
 		directionV = -directionV
 		
 func _on_playerDamage_body_enter( body ):
-	print(body.get_name())
+	#print(body.get_name())
 	var groups = body.get_groups()
 	#Print for testing purposes
-	print(str('Body entered: ', body.get_name()))
+	#print(str('Body entered: ', body.get_name()))
 	if (groups.has("player")):
 		body.get_node("Health Canvas").modify_health(-damage)
 	if (enemyType == 7):

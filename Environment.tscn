@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=1]
+[gd_scene load_steps=41 format=1]
 
 [ext_resource path="res://Jump.wav" type="Sample" id=1]
 [ext_resource path="res://Laser.wav" type="Sample" id=2]
@@ -25,6 +25,12 @@
 [ext_resource path="res://scenes/enemyScenes/SpawnScenes/HorizontalSliderSpawn.tscn" type="PackedScene" id=23]
 [ext_resource path="res://scenes/enemyScenes/SpawnScenes/LargeTrackerSpawn.tscn" type="PackedScene" id=24]
 [ext_resource path="res://scenes/enemyScenes/ShootinTrap.tscn" type="PackedScene" id=25]
+[ext_resource path="res://scenes/enemyScenes/FastSmallTracker.tscn" type="PackedScene" id=26]
+[ext_resource path="res://scenes/enemyScenes/HorizontalSlider.tscn" type="PackedScene" id=27]
+[ext_resource path="res://scenes/enemyScenes/LargeSlowTracker.tscn" type="PackedScene" id=28]
+[ext_resource path="res://scenes/enemyScenes/CircularFlyer.tscn" type="PackedScene" id=29]
+[ext_resource path="res://sprites/SpriteSheet.tex" type="Texture" id=30]
+[ext_resource path="res://scripts/collectableScripts/HP Increase.gd" type="Script" id=31]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -99,6 +105,35 @@ draw_bg = true
 
 custom_solver_bias = 0.0
 points = Vector2Array( -31.6326, 27.1445, -31.6326, -24.998, 32.6169, -24.998, 32.6169, 27.1445 )
+
+[sub_resource type="Curve2D" id=7]
+
+bake_interval = 5.0
+_data = {
+"points": Vector2Array( 0, 0, 0, 0, 3.94785, -11.3755, 0, 0, 0, 0, 3.82285, -31.0005 )
+}
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.8, 10 )
+
+[sub_resource type="Animation" id=9]
+
+resource/name = "medKitAnimation"
+length = 3.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:unit_offset")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
 [node name="root" type="Node2D"]
 
@@ -244,7 +279,7 @@ _update_shape_index = 6
 
 process/pause_mode = 1
 editor/display_folded = true
-transform/pos = Vector2( 11145, 1588 )
+transform/pos = Vector2( 2951.1, 288.474 )
 input/pickable = false
 shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 0.95243, 0, 0, 1.32772, 0, 0 )
@@ -544,9 +579,410 @@ transform/pos = Vector2( 11767, 1819 )
 transform/rot = -46.0
 transform/scale = Vector2( 1, 0.756 )
 
+[node name="ShootinTrap1" parent="." instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 11784.8, 2572.3 )
+transform/rot = -0.0285809
+transform/scale = Vector2( 1, 0.756 )
+
+[node name="ShootinTrap9" parent="." instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 11521, 3933.72 )
+transform/rot = -0.0285809
+transform/scale = Vector2( 1, 0.756 )
+
+[node name="ShootinTrap10" parent="." instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 11872.4, 5357.15 )
+transform/rot = -0.0285809
+transform/scale = Vector2( 1, 0.756 )
+
+[node name="ShootinTrap11" parent="." instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 11091.3, 7081.43 )
+transform/rot = -86.9288
+transform/scale = Vector2( 1, 0.756 )
+
+[node name="ShootinTrap12" parent="." instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 11986.1, 6804.74 )
+transform/rot = -94.1781
+transform/scale = Vector2( 1, 0.756 )
+
+[node name="ShootinTrap2" parent="." instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 8271.62, 2383.84 )
+transform/rot = 89.1357
+transform/scale = Vector2( 1, 0.756 )
+
+[node name="ShootinTrap3" parent="." instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 9484.19, 5624.22 )
+transform/rot = 89.1357
+transform/scale = Vector2( 1, 0.756 )
+
+[node name="ShootinTrap4" parent="." instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 8555.97, 5814.99 )
+transform/rot = 89.1357
+transform/scale = Vector2( 1, 0.756 )
+
+[node name="ShootinTrap5" parent="." instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 7724.77, 5993.7 )
+transform/rot = 89.1357
+transform/scale = Vector2( 1, 0.756 )
+
+[node name="ShootinTrap6" parent="." instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 5149.34, 6101.77 )
+transform/rot = 89.1357
+transform/scale = Vector2( 1, 0.756 )
+
+[node name="ShootinTrap7" parent="." instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 6687.67, 3248.78 )
+transform/rot = 177.759
+transform/scale = Vector2( 1, 0.756 )
+
+[node name="ShootinTrap8" parent="." instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 3966.78, 3439.26 )
+transform/rot = 177.759
+transform/scale = Vector2( 1, 0.756 )
+
+[node name="FastSmallTracker" parent="." instance=ExtResource( 26 )]
+
+transform/pos = Vector2( 943.689, 617.731 )
+
+[node name="FastSmallTracker 2" parent="." instance=ExtResource( 26 )]
+
+transform/pos = Vector2( 1314.4, 304.483 )
+
+[node name="FastSmallTracker 3" parent="." instance=ExtResource( 26 )]
+
+transform/pos = Vector2( 1778.3, 485.304 )
+
+[node name="FastSmallTracker 4" parent="." instance=ExtResource( 26 )]
+
+transform/pos = Vector2( 1028.44, 272.075 )
+
+[node name="FastSmallTracker 5" parent="." instance=ExtResource( 26 )]
+
+transform/pos = Vector2( 1504.76, 868.587 )
+
+[node name="FastSmallTracker 6" parent="." instance=ExtResource( 26 )]
+
+transform/pos = Vector2( 2117.25, 720.015 )
+
+[node name="FastSmallTracker 7" parent="." instance=ExtResource( 26 )]
+
+transform/pos = Vector2( 2374.04, 863.514 )
+
+[node name="FastSmallTracker 8" parent="." instance=ExtResource( 26 )]
+
+transform/pos = Vector2( 1767.31, 775.401 )
+
+[node name="HorizontalSlider" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 1819.12, 1034.03 )
+
+[node name="HorizontalSlider1" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 2064.11, 1034.31 )
+
+[node name="HorizontalSlider2" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 2314.84, 1034.31 )
+
+[node name="HorizontalSlider3" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 2261.08, 1225.71 )
+
+[node name="HorizontalSlider4" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 1972.74, 1225.71 )
+
+[node name="HorizontalSlider5" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 2647.47, 458.105 )
+
+[node name="HorizontalSlider6" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 2782.19, 458.105 )
+
+[node name="HorizontalSlider7" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 2553.47, 553.904 )
+
+[node name="HorizontalSlider8" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 2563.65, 793.997 )
+
+[node name="HorizontalSlider9" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 2782.05, 793.997 )
+
+[node name="LargeSlowTracker" parent="." instance=ExtResource( 28 )]
+
+transform/pos = Vector2( 469.807, 975.07 )
+
+[node name="LargeSlowTracker1" parent="." instance=ExtResource( 28 )]
+
+transform/pos = Vector2( 2964.2, 1309.83 )
+
+[node name="LargeSlowTracker2" parent="." instance=ExtResource( 28 )]
+
+transform/pos = Vector2( 7042.73, 1726.09 )
+
+[node name="LargeSlowTracker3" parent="." instance=ExtResource( 28 )]
+
+transform/pos = Vector2( 8991.3, 2833.52 )
+
+[node name="LargeSlowTracker5" parent="." instance=ExtResource( 28 )]
+
+transform/pos = Vector2( 11404.7, 7473.87 )
+
+[node name="LargeSlowTracker4" parent="." instance=ExtResource( 28 )]
+
+transform/pos = Vector2( 3771.93, 4908.94 )
+
+[node name="LargeSlowTracker6" parent="." instance=ExtResource( 28 )]
+
+transform/pos = Vector2( 860.436, 5029.06 )
+
+[node name="LargeSlowTracker7" parent="." instance=ExtResource( 28 )]
+
+transform/pos = Vector2( 2290.44, 3787.81 )
+
+[node name="CircularFlyer" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 746.572, 624.649 )
+
+[node name="CircularFlyer1" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 2228.03, 1344.5 )
+
+[node name="CircularFlyer4" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 4148.74, 1478.11 )
+
+[node name="CircularFlyer5" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 4576.31, 1519.87 )
+
+[node name="CircularFlyer6" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 3667.73, 1359.53 )
+
+[node name="CircularFlyer7" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 4952.1, 1519.87 )
+
+[node name="CircularFlyer8" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 5406.39, 1508.18 )
+
+[node name="CircularFlyer9" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 5693.66, 1533.23 )
+
+[node name="CircularFlyer10" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 6057.76, 1501.5 )
+
+[node name="CircularFlyer13" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 10689, 5321.03 )
+
+[node name="CircularFlyer14" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 11139.7, 6171.95 )
+
+[node name="CircularFlyer15" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 11655.8, 6451.4 )
+
+[node name="CircularFlyer16" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 11620.5, 7032.95 )
+
+[node name="CircularFlyer17" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 12781, 3572.45 )
+
+[node name="CircularFlyer11" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 6460.27, 1498.16 )
+transform/rot = -42.7183
+
+[node name="CircularFlyer12" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 7026.22, 1555.57 )
+transform/rot = -14.7012
+
+[node name="CircularFlyer2" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 1805.68, 207.577 )
+
+[node name="CircularFlyer3" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 645.103, 2096.64 )
+
+[node name="HorizontalSlider 2" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 167.424, 1849.75 )
+
+[node name="HorizontalSlider10" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( -53.9597, 1850.63 )
+
+[node name="HorizontalSlider11" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( -326.839, 1850.63 )
+
+[node name="HorizontalSlider13" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( -87.4824, 2527.27 )
+
+[node name="HorizontalSlider12" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( -519.068, 1985.45 )
+transform/rot = -30.224
+
+[node name="HorizontalSlider 3" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 11387.6, 1642.29 )
+
+[node name="HorizontalSlider14" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 11599.3, 1641.55 )
+
+[node name="HorizontalSlider17" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 12191.7, 2891.14 )
+
+[node name="HorizontalSlider18" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 12452, 3177.2 )
+
+[node name="HorizontalSlider19" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 12833.8, 3177.2 )
+
+[node name="HorizontalSlider16" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 11761.8, 2021.51 )
+transform/rot = 44.4021
+
+[node name="HorizontalSlider15" parent="." instance=ExtResource( 27 )]
+
+transform/pos = Vector2( 11750, 941.893 )
+transform/rot = -43.427
+
+[node name="FastSmallTracker 9" parent="." instance=ExtResource( 26 )]
+
+transform/pos = Vector2( 11716.7, 1519.35 )
+
+[node name="FastSmallTracker10" parent="." instance=ExtResource( 26 )]
+
+transform/pos = Vector2( 11746.1, 1365.72 )
+
+[node name="FastSmallTracker11" parent="." instance=ExtResource( 26 )]
+
+transform/pos = Vector2( 11845.1, 2082.72 )
+
+[node name="FastSmallTracker12" parent="." instance=ExtResource( 26 )]
+
+transform/pos = Vector2( 11489.4, 2969.04 )
+
+[node name="CircularFlyer 2" parent="." instance=ExtResource( 29 )]
+
+transform/pos = Vector2( 11452.3, 1267.03 )
+
+[node name="Max HP Increase Node" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 2900, 288.474 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Path2D" type="Path2D" parent="Max HP Increase Node"]
+
+curve = SubResource( 7 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Max HP Increase Node/Path2D"]
+
+transform/pos = Vector2( 3.94785, -11.3755 )
+transform/rot = 90.3649
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = true
+cubic_interp = true
+loop = true
+lookahead = 4.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HP Increase Sprite" type="Sprite" parent="Max HP Increase Node/Path2D/PathFollow2D"]
+
+transform/pos = Vector2( 4, 4 )
+texture = ExtResource( 30 )
+vframes = 20
+hframes = 20
+frame = 12
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HealthIncrease" type="Area2D" parent="Max HP Increase Node/Path2D/PathFollow2D/HP Increase Sprite" groups=[
+"collectable",
+]]
+
+transform/pos = Vector2( -4, -4 )
+input/pickable = false
+shapes/0/shape = SubResource( 8 )
+shapes/0/transform = Matrix32( 0.535236, 0, 0, 0.425672, 4.03056, 4.52896 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 31 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Max HP Increase Node/Path2D/PathFollow2D/HP Increase Sprite/HealthIncrease"]
+
+transform/pos = Vector2( 4.03056, 4.52896 )
+transform/scale = Vector2( 0.535236, 0.425672 )
+shape = SubResource( 8 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Max HP Increase Node/Path2D/PathFollow2D"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/medKitAnimation = SubResource( 9 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "medKitAnimation"
+
 [connection signal="body_enter" from="SpikeTrap" to="SpikeTrap" method="_on_SpikeTrap_body_enter"]
 
 [connection signal="area_enter" from="DoorLock" to="DoorLock" method="_on_DoorLock_area_enter"]
+
+[connection signal="body_enter" from="Max HP Increase Node/Path2D/PathFollow2D/HP Increase Sprite/HealthIncrease" to="Max HP Increase Node/Path2D/PathFollow2D/HP Increase Sprite/HealthIncrease" method="_on_Medkit1_body_enter"]
 
 
 [editable path="pause_popup"]

@@ -11,14 +11,18 @@ visibility/visible = false
 
 [node name="CreditScreen" type="VBoxContainer" parent="."]
 
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 165.0
-margin/top = 0.0
-margin/right = 911.0
-margin/bottom = 600.0
+margin/left = 347.0
+margin/top = 300.0
+margin/right = -399.0
+margin/bottom = -300.0
 alignment = 0
 
 [node name="Label" type="Label" parent="CreditScreen"]

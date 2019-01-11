@@ -44,8 +44,8 @@ curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 
-transform/pos = Vector2( 3.94785, -11.3755 )
-transform/rot = 90.3649
+transform/pos = Vector2( 5, -15 )
+transform/rot = 172.289
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0
@@ -72,22 +72,26 @@ __meta__ = {
 "collectable",
 ]]
 
-transform/pos = Vector2( -4.4673, -4.1095 )
+transform/pos = Vector2( -18.7401, -0.575339 )
+transform/rot = -69.3256
 input/pickable = false
 shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 0.535053, -1.2956e-08, 9.72585e-09, 0.401656, 4.47096, 4.212 )
+shapes/0/transform = Matrix32( 0.362638, 0, 7.45058e-09, 0.307692, 4.03999, 4 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Medkit Sprite/Medkit1"]
 
-transform/pos = Vector2( 4.47096, 4.212 )
+transform/pos = Vector2( 4.03999, 4 )
 transform/rot = 1.38738e-06
-transform/scale = Vector2( 0.535053, 0.401656 )
+transform/scale = Vector2( 0.362638, 0.307692 )
 shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0

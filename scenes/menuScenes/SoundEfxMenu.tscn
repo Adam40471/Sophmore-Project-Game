@@ -11,14 +11,18 @@ visibility/visible = false
 
 [node name="SoundEfxMenu" type="VBoxContainer" parent="."]
 
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 163.0
-margin/top = 0.0
-margin/right = 913.0
-margin/bottom = 598.0
+margin/left = 349.0
+margin/top = 300.0
+margin/right = -401.0
+margin/bottom = -298.0
 alignment = 0
 
 [node name="Button" type="Label" parent="SoundEfxMenu"]

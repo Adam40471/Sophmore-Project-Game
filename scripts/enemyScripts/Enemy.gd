@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 #ENEMY MASTER SCRIPT -----------------------------------
 
+var instancePath
 var audioPlayer
 var runAudioInt = null
 
@@ -139,7 +140,8 @@ func decrease_Health(amount):
 		var medkit = medkit_scene.instance()
 		medkit.set_pos(position_medkit)
 		get_tree().get_root().add_child(medkit)
-		audioPlayer.play("Laser3")
+		get_node(instancePath).alive = false
+#		audioPlayer.play("Laser3")
 		queue_free()
 	#Limits enemys health so it doesn't go above its maxHealth
 	if (currentHealth > maxHealth):

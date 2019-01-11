@@ -12,8 +12,8 @@ extends KinematicBody2D
 const bulletDirections = {2: [Vector2(4,0),Vector2(19,65)],
  						0: [Vector2(0,4),Vector2(0,0)],
  						4: [Vector2(0,-4),Vector2(0,0)], 
- 						1: [Vector2(2, -2),Vector2(15,57)],
-				 	 	3: [Vector2(2,2),Vector2(15,78)]}
+ 						1: [Vector2(2*sqrt(2), -sqrt(2)*2),Vector2(15,57)],
+				 	 	3: [Vector2(2*sqrt(2),sqrt(2)*2),Vector2(15,78)]}
 
 var currentWeapon = 0
 
@@ -258,7 +258,21 @@ func weaponShoot(currentWeapon):
 		position.x += bulletDirections[aim][1].x * direction
 		position.y += bulletDirections[aim][1].y
 		weapon.set_pos(position)
+		var rot = 0
+		if (direction == -1):
+			if (aim == 1):
+				rot = 90
+			elif (aim == 2):
+				rot = 135
+			else:
+				rot = 180
+		else:
+			if (aim == 1):
+				rot = 45
+			elif (aim == 3):
+				rot = -45
 		get_tree().get_root().add_child(weapon)
+		weapon.set_rot(rot)
 		if currentWeapon == 0:
 			weapons[currentWeapon][1] -= 1
 			get_node("../Player/Health Canvas/Weapon").set_text(str(get_node("../Player").weapons[currentWeapon][0])

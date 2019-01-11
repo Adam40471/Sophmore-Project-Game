@@ -194,8 +194,8 @@ default/chorus_send = 0.0
 
 [connection signal="pressed" from="MainMenu/Credits" to="MainMenu" method="_on_Credits_pressed"]
 
-[connection signal="pressed" from="MainMenu/Exit" to="MainMenu" method="_on_MenuButton_4_pressed"]
-
 [connection signal="pressed" from="MainMenu/Exit" to="MainMenu" method="_on_Exit_pressed"]
+
+[connection signal="pressed" from="MainMenu/Exit" to="MainMenu" method="_on_MenuButton_4_pressed"]
 
 
